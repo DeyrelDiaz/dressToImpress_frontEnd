@@ -15,7 +15,7 @@ export default class ItemDisplay extends React.Component {
                         <Card.Img src={this.props.imgUrl} />
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>{this.props.text}</Card.Text>
-                        <Button>Buy Now!</Button>
+                        <Button variant="info">Buy Now!</Button>
                     </Card.Body>
                 </Card>
             </div>

@@ -81,7 +81,7 @@ export default class Register extends React.Component {
                             <Form.Label>Date Of Birth:</Form.Label>
                             <Form.Control name="dob" onChange={this.setValue} type="date" />
                         </Form.Group>
-                        <Button type="submit">Register</Button>
+                        <Button variant="info" type="submit" >Register</Button>
                     </Form>
                 </Container>
             </div>
