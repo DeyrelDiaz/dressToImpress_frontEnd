@@ -15,7 +15,7 @@ export default class NavBar extends React.Component {
                     <Nav>
                         <Nav.Link href="/">Home</Nav.Link>
                         <Nav.Link href="/register">Add User</Nav.Link>
-                        <Nav.Link>Add Item</Nav.Link>
+                        <Nav.Link href="/newItem">Add Item</Nav.Link>
                     </Nav>
                 </Navbar>
             </div>
