@@ -8,6 +8,7 @@ import NavBar from './Components/Navbar/Navbar.component'
 import HomePage from './Pages/Home/Home.page';
 import Register from './Components/Register/Register.component';
 import NewItem from './Components/NewItem/NewItem.component';
+import UserLogin from './Components/UserLogin/UserLogin.component';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/register" component={Register} />
           <Route path="/newItem" component={NewItem}/>
+          <Route path = "/login" component={UserLogin}/>
         </Switch>
     </div>
   );
