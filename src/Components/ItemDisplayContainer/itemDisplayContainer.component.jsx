@@ -24,14 +24,14 @@ export default class ItemDisplayContainer extends React.Component {
                 <ButtonGroup horizontal >
                 <DropdownButton as={ButtonGroup} title="Sort by Color" id="bg-vertical-dropdown-1" variant = "">
                     <Dropdown.Item eventKey="1" onChange={this.setValue}>Red</Dropdown.Item>
-                    <Dropdown.Item eventKey="2">Orange</Dropdown.Item>
-                    <Dropdown.Item eventKey="3">Yellow</Dropdown.Item>
-                    <Dropdown.Item eventKey="4">Green</Dropdown.Item>
-                    <Dropdown.Item eventKey="5">Blue</Dropdown.Item>
-                    <Dropdown.Item eventKey="6">Indigo</Dropdown.Item>
-                    <Dropdown.Item eventKey="7">Violet</Dropdown.Item>
-                    <Dropdown.Item eventKey="8">White</Dropdown.Item>
-                    <Dropdown.Item eventKey="9">Black</Dropdown.Item>
+                    <Dropdown.Item eventKey="2" onChange={this.setValue}>Orange</Dropdown.Item>
+                    <Dropdown.Item eventKey="3" onChange={this.setValue}>Yellow</Dropdown.Item>
+                    <Dropdown.Item eventKey="4" onChange={this.setValue}>Green</Dropdown.Item>
+                    <Dropdown.Item eventKey="5" onChange={this.setValue}>Blue</Dropdown.Item>
+                    <Dropdown.Item eventKey="6" onChange={this.setValue}>Indigo</Dropdown.Item>
+                    <Dropdown.Item eventKey="7" onChange={this.setValue}>Violet</Dropdown.Item>
+                    <Dropdown.Item eventKey="8" onChange={this.setValue}>White</Dropdown.Item>
+                    <Dropdown.Item eventKey="9" onChange={this.setValue}>Black</Dropdown.Item>
 
                 </DropdownButton>
                 <DropdownButton as={ButtonGroup} title="Sort by Price" id="bg-vertical-dropdown-2" variant = "">
