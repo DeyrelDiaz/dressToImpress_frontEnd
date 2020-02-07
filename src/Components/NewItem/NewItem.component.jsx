@@ -10,7 +10,7 @@ export default class NewItem extends React.Component {
         
         this.state = {
             Color: '',
-            itemType: '',
+            ItemType: '',
             Name: '',
             Category: '',
             Cost: '',
@@ -32,7 +32,7 @@ export default class NewItem extends React.Component {
         event.preventDefault();
         const newItem = {
             Color: this.state.Color,
-            itemType: this.state.itemType,
+            ItemType: this.state.ItemType,
             Name: this.state.Name,
             Category: this.state.Category,
             Cost: this.state.Cost,
@@ -71,9 +71,9 @@ export default class NewItem extends React.Component {
                             <Form.Label>Color:</Form.Label>
                             <Form.Control name="Color" onChange={this.setValue} type="text" placeholder="Enter Color" />
                         </Form.Group>
-                        <Form.Group controlId="itemType">
+                        <Form.Group controlId="ItemType">
                             <Form.Label>Item Type:</Form.Label>
-                            <Form.Control name="itemType" onChange={this.setValue} type="text" placeholder="must be atleast 8 characters long" />
+                            <Form.Control name="ItemType" onChange={this.setValue} type="text" placeholder="must be atleast 8 characters long" />
                         </Form.Group>
                         <Form.Group controlId="Name">
                             <Form.Label>Name:</Form.Label>
