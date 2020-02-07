@@ -46,10 +46,10 @@ export default class Register extends React.Component {
             .then((result) => {
                 console.log(result);
                 if (result.success == true) {
-                    this.props.history.push('/');
+                    this.props.history.push('/home');
                 }
                 else {
-                    alert('something went wrong')
+                    alert('User already exists! Please login.')
                 }
             })
         }

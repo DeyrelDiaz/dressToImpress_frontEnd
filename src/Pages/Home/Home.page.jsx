@@ -25,7 +25,7 @@ export default class HomePage extends React.Component {
 
         return(
             <div>
-               <ItemDisplayContainer />
+                <ItemDisplayContainer />
             </div>
         )
     }

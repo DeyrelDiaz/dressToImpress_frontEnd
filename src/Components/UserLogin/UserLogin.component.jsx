@@ -3,7 +3,7 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
-console.log("im in here (top)")
+// console.log("im in here (top)")
 
 
 export default class UserLogin extends React.Component {
@@ -32,8 +32,8 @@ export default class UserLogin extends React.Component {
             Password: this.state.Password,
 
         }
-        console.log(UserLogin);
-        fetch(`api/user?username=${this.state.Username}';password=${this.state.Password}`, {
+        // console.log(UserLogin);
+        fetch(`api/user?username=${this.state.Username}&password=${this.state.Password}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +41,17 @@ export default class UserLogin extends React.Component {
         }).then((res) => res.json())
         .then((result) => {
             if (result.success == true)
-                localStorage.setItem('user', JSON.stringify(result.user));
+            {
+                localStorage.setItem('user', JSON.stringify(result.user)); 
+                alert('Login Successful! Welcome '+ newItem.Username +'!')
+    
+                this.props.history.push('/home')
+
+            }
+            else{
+                console.log('User login failed.')
+                alert('Your login information is not correct! Please try again.')
+            }
             
         },
         (err) => {
@@ -51,7 +61,7 @@ export default class UserLogin extends React.Component {
 
 
     render() {
-        console.log("im in here (bottom)")
+        // console.log("im in here (bottom)")
         return(
             <div>
                 <Container>
@@ -62,9 +72,8 @@ export default class UserLogin extends React.Component {
                         </Form.Group>
                         <Form.Group controlId="Password">
                             <Form.Label>Item Type:</Form.Label>
-                            <Form.Control name="Password" onChange={this.setValue} type="password" placeholder="must be atleast 8 characters long" />
-                        </Form.Group>
-                       
+                            <Form.Control name="Password" onChange={this.setValue} type="password" placeholder="Enter Password" />
+                        </Form.Group>                
                         <Button variant="info" type="submit" >Login!</Button>
                     </Form>
                 </Container>
