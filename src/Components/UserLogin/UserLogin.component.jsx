@@ -44,13 +44,14 @@ export default class UserLogin extends React.Component {
             {
                 localStorage.setItem('user', JSON.stringify(result.user)); 
                 alert('Login Successful! Welcome '+ newItem.Username +'!')
-    
                 this.props.history.push('/home')
 
             }
             else{
                 console.log('User login failed.')
-                alert('Your login information is not correct! Please try again.')
+                alert('Your login information is not correct! Please register as a user.')
+                this.props.history.push('/register')
+
             }
             
         },
