@@ -23,7 +23,7 @@ export default class ItemDisplayContainer extends React.Component {
             <div>
                 <ButtonGroup horizontal >
                 <DropdownButton as={ButtonGroup} title="Sort by Color" id="bg-vertical-dropdown-1" variant = "">
-                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                    <Dropdown.Item eventKey="1" onChange={this.setValue}>Red</Dropdown.Item>
                     <Dropdown.Item eventKey="2">Orange</Dropdown.Item>
                     <Dropdown.Item eventKey="3">Yellow</Dropdown.Item>
                     <Dropdown.Item eventKey="4">Green</Dropdown.Item>

@@ -15,7 +15,8 @@ export default class NewItem extends React.Component {
             Category: '',
             cost: '',
             Description: '',
-            Display: ''
+            Display: '',
+            Quantity: ''
         };
 
         this.setValue = this.setValue.bind(this);
@@ -36,10 +37,11 @@ export default class NewItem extends React.Component {
             Category: this.state.Category,
             dob: this.state.cost,
             Description: this.state.Description,
-            Display: this.state.Display
+            Display: this.state.Display,
+            Quantity: this.state.Quantity
         }
         console.log(newItem);
-        fetch('/api/user', {
+        fetch('/api/item', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,6 +51,7 @@ export default class NewItem extends React.Component {
             .then((result) => {
                 console.log(result);
                 if (result.success == true) {
+                    alert("The item was added.")
                     this.props.history.push('/');
                 }
                 else {
@@ -56,6 +59,8 @@ export default class NewItem extends React.Component {
                 }
             })
         }
+
+        
 
     render() {
         return(
@@ -78,9 +83,21 @@ export default class NewItem extends React.Component {
                             <Form.Label>Category:</Form.Label>
                             <Form.Control name="Category" onChange={this.setValue} type="text"  />
                         </Form.Group>
-                        <Form.Group controlId="dob">
-                            <Form.Label>Date Of Birth:</Form.Label>
-                            <Form.Control name="dob" onChange={this.setValue} type="date" />
+                        <Form.Group controlId="Cost">
+                            <Form.Label>Cost:</Form.Label>
+                            <Form.Control name="Cost" onChange={this.setValue} type="text" placeholder="$$$" />
+                        </Form.Group>
+                        <Form.Group controlId="Description">
+                            <Form.Label>Description:</Form.Label>
+                            <Form.Control name="Description" onChange={this.setValue} type="text"  />
+                        </Form.Group>
+                        <Form.Group controlId="Display">
+                            <Form.Label>Image To Display:</Form.Label>
+                            <Form.Control name="Display" onChange={this.setValue} type="text"  placeholder="Please enter URL or path"/>
+                        </Form.Group>
+                        <Form.Group controlId="Quantity">
+                            <Form.Label>Quantity:</Form.Label>
+                            <Form.Control name="Quantity" onChange={this.setValue} type="text" />
                         </Form.Group>
                         <Button variant="info" type="submit" >Add Item</Button>
                     </Form>
