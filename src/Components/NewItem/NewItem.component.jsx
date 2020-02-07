@@ -10,10 +10,10 @@ export default class NewItem extends React.Component {
         
         this.state = {
             Color: '',
-            ItemType: '',
+            itemType: '',
             Name: '',
             Category: '',
-            cost: '',
+            Cost: '',
             Description: '',
             Display: '',
             Quantity: ''
@@ -32,10 +32,10 @@ export default class NewItem extends React.Component {
         event.preventDefault();
         const newItem = {
             Color: this.state.Color,
-            ItemType: this.state.ItemType,
+            itemType: this.state.itemType,
             Name: this.state.Name,
             Category: this.state.Category,
-            dob: this.state.cost,
+            Cost: this.state.Cost,
             Description: this.state.Description,
             Display: this.state.Display,
             Quantity: this.state.Quantity
@@ -51,11 +51,11 @@ export default class NewItem extends React.Component {
             .then((result) => {
                 console.log(result);
                 if (result.success == true) {
-                    alert("The item was added.")
-                    this.props.history.push('/');
+                    alert('Item Added')
+                  //  this.props.history.push('/home');
                 }
                 else {
-                    alert('something went wrong')
+                    alert('Item was not added')
                 }
             })
         }
