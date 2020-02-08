@@ -72,7 +72,7 @@ export default class UserLogin extends React.Component {
                             <Form.Control name="Username" onChange={this.setValue} type="text" placeholder="Enter Username" />
                         </Form.Group>
                         <Form.Group controlId="Password">
-                            <Form.Label>Item Type:</Form.Label>
+                            <Form.Label>Password:</Form.Label>
                             <Form.Control name="Password" onChange={this.setValue} type="password" placeholder="Enter Password" />
                         </Form.Group>                
                         <Button variant="info" type="submit" >Login!</Button>
