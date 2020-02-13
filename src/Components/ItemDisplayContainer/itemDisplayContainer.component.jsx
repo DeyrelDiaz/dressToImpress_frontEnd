@@ -23,7 +23,7 @@ export default class ItemDisplayContainer extends React.Component {
 
     setValue = event => {
         // if (event.targer.innerText == "")
-        console.log('object :', object);
+       // console.log('object :', object);
     }
 
     onSubmit(event) {

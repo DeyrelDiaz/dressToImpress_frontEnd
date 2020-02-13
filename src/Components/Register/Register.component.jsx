@@ -13,7 +13,11 @@ export default class Register extends React.Component {
             password: '',
             fname: '',
             lname: '',
-            dob: ''
+            dob: '',
+            number: '',
+            street: '',
+            state: '',
+            zip: ''
         };
 
         this.setValue = this.setValue.bind(this);
@@ -33,7 +37,11 @@ export default class Register extends React.Component {
             password: this.state.password,
             fname: this.state.fname,
             lname: this.state.lname,
-            dob: this.state.dob
+            dob: this.state.dob,
+            number: this.state.number,
+            street: this.state.street,
+            state: this.state.state,
+            zip: this.state.zip
         }
         console.log(newCust);
         fetch('/api/user', {
@@ -80,6 +88,22 @@ export default class Register extends React.Component {
                         <Form.Group controlId="dob">
                             <Form.Label>Date Of Birth:</Form.Label>
                             <Form.Control name="dob" onChange={this.setValue} type="date" />
+                        </Form.Group>
+                        <Form.Group controlId="number">
+                            <Form.Label>Number:</Form.Label>
+                            <Form.Control name="number" onChange={this.setValue} type="text" />
+                        </Form.Group>
+                        <Form.Group controlId="street">
+                            <Form.Label>street:</Form.Label>
+                            <Form.Control name="street" onChange={this.setValue} type="text" />
+                        </Form.Group>
+                        <Form.Group controlId="state">
+                            <Form.Label>State:</Form.Label>
+                            <Form.Control name="state" onChange={this.setValue} type="text" />
+                        </Form.Group>
+                        <Form.Group controlId="zip">
+                            <Form.Label>Zip code:</Form.Label>
+                            <Form.Control name="zip" onChange={this.setValue} type="text" />
                         </Form.Group>
                         <Button variant="info" type="submit" >Register</Button>
                     </Form>
