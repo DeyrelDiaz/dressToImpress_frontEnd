@@ -40,6 +40,7 @@ export default class Register extends React.Component {
             dob: this.state.dob,
             number: this.state.number,
             street: this.state.street,
+            city: this.state.city,
             state: this.state.state,
             zip: this.state.zip
         }
@@ -96,6 +97,10 @@ export default class Register extends React.Component {
                         <Form.Group controlId="street">
                             <Form.Label>Street:</Form.Label>
                             <Form.Control name="street" onChange={this.setValue} type="text" />
+                        </Form.Group>
+                        <Form.Group controlId="city">
+                            <Form.Label>City:</Form.Label>
+                            <Form.Control name="city" onChange={this.setValue} type="text" />
                         </Form.Group>
                         <Form.Group controlId="state">
                             <Form.Label>State:</Form.Label>
