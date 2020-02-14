@@ -14,9 +14,10 @@ export default class ItemDisplayContainer extends React.Component {
         };    }
     
     displayItems(item, index) {
+        console.log('items being mapped', item);
         return (
             <Col>
-                <ItemDisplay title={item.name} text={item.Description} imgUrl={item.Display} />
+                <ItemDisplay id={item.ID} title={item.Name} text={item.Description} imgUrl={item.Display} />
             </Col>
         )
     }
