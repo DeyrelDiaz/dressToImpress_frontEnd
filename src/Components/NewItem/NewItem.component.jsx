@@ -12,12 +12,10 @@ export default class NewItem extends React.Component {
             Color: '',
             ItemType: '',
             Name: '',
-            Category: '',
             Cost: '',
             Description: '',
-            Display: '',
-            Quantity: ''
-        };
+            Display: ''
+            };
 
         this.setValue = this.setValue.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -34,12 +32,10 @@ export default class NewItem extends React.Component {
             Color: this.state.Color,
             ItemType: this.state.ItemType,
             Name: this.state.Name,
-            Category: this.state.Category,
             Cost: this.state.Cost,
             Description: this.state.Description,
-            Display: this.state.Display,
-            Quantity: this.state.Quantity
-        }
+            Display: this.state.Display
+                }
         console.log(newItem);
         fetch('/api/item', {
             method: 'POST',
@@ -79,10 +75,6 @@ export default class NewItem extends React.Component {
                             <Form.Label>Name:</Form.Label>
                             <Form.Control name="Name" onChange={this.setValue} type="text" />
                         </Form.Group>
-                        <Form.Group controlId="Category">
-                            <Form.Label>Category:</Form.Label>
-                            <Form.Control name="Category" onChange={this.setValue} type="text"  />
-                        </Form.Group>
                         <Form.Group controlId="Cost">
                             <Form.Label>Cost:</Form.Label>
                             <Form.Control name="Cost" onChange={this.setValue} type="text" placeholder="$$$" />
@@ -94,10 +86,6 @@ export default class NewItem extends React.Component {
                         <Form.Group controlId="Display">
                             <Form.Label>Image To Display:</Form.Label>
                             <Form.Control name="Display" onChange={this.setValue} type="text"  placeholder="Please enter URL or path"/>
-                        </Form.Group>
-                        <Form.Group controlId="Quantity">
-                            <Form.Label>Quantity:</Form.Label>
-                            <Form.Control name="Quantity" onChange={this.setValue} type="text" />
                         </Form.Group>
                         <Button variant="info" type="submit" >Add Item</Button>
                     </Form>
