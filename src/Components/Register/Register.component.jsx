@@ -71,30 +71,30 @@ export default class Register extends React.Component {
                     <Form onSubmit={this.onSubmit}>
                         <Form.Group controlId="username">
                             <Form.Label>Username:</Form.Label>
-                            <Form.Control name="username" onChange={this.setValue} type="text" placeholder="Enter username" />
+                            <Form.Control name="username" onChange={this.setValue} type="text" placeholder="Enter username." />
                         </Form.Group>
                         <Form.Group controlId="password">
                             <Form.Label>Password:</Form.Label>
-                            <Form.Control name="password" onChange={this.setValue} type="password" placeholder="must be atleast 8 characters long" />
+                            <Form.Control name="password" onChange={this.setValue} type="password" placeholder="Must be at least eight characters long." />
                         </Form.Group>
                         <Form.Group controlId="fname">
                             <Form.Label>First Name:</Form.Label>
-                            <Form.Control name="fname" onChange={this.setValue} type="text" />
+                            <Form.Control name="fname" onChange={this.setValue} type="text" placeholder="Enter First Name."/>
                         </Form.Group>
                         <Form.Group controlId="lname">
                             <Form.Label>Last Name:</Form.Label>
-                            <Form.Control name="lname" onChange={this.setValue} type="text"  />
+                            <Form.Control name="lname" onChange={this.setValue} type="text"  placeholder="Enter Last Name."/>
                         </Form.Group>
                         <Form.Group controlId="dob">
                             <Form.Label>Date Of Birth:</Form.Label>
-                            <Form.Control name="dob" onChange={this.setValue} type="date" />
+                            <Form.Control name="dob" onChange={this.setValue} type="date" placeholder="Enter birthdate." />
                         </Form.Group>
                         <Form.Group controlId="number">
                             <Form.Label>Number:</Form.Label>
-                            <Form.Control name="number" onChange={this.setValue} type="text" />
+                            <Form.Control name="number" onChange={this.setValue} type="text" placeholder="Enter Street Number."/>
                         </Form.Group>
                         <Form.Group controlId="street">
-                            <Form.Label>street:</Form.Label>
+                            <Form.Label>Street:</Form.Label>
                             <Form.Control name="street" onChange={this.setValue} type="text" />
                         </Form.Group>
                         <Form.Group controlId="state">
@@ -102,7 +102,7 @@ export default class Register extends React.Component {
                             <Form.Control name="state" onChange={this.setValue} type="text" />
                         </Form.Group>
                         <Form.Group controlId="zip">
-                            <Form.Label>Zip code:</Form.Label>
+                            <Form.Label>Zip Code:</Form.Label>
                             <Form.Control name="zip" onChange={this.setValue} type="text" />
                         </Form.Group>
                         <Button variant="info" type="submit" >Register</Button>

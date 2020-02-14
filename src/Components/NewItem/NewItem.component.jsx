@@ -65,23 +65,23 @@ export default class NewItem extends React.Component {
                     <Form onSubmit={this.onSubmit}>
                         <Form.Group controlId="Color">
                             <Form.Label>Color:</Form.Label>
-                            <Form.Control name="Color" onChange={this.setValue} type="text" placeholder="Enter Color" />
+                            <Form.Control name="Color" onChange={this.setValue} type="text" placeholder="ex. Pink, Blue, White, etc." />
                         </Form.Group>
                         <Form.Group controlId="ItemType">
                             <Form.Label>Item Type:</Form.Label>
-                            <Form.Control name="ItemType" onChange={this.setValue} type="text" placeholder="must be atleast 8 characters long" />
+                            <Form.Control name="ItemType" onChange={this.setValue} type="text" placeholder="ex. Pants, Shirt, Skirt, etc." />
                         </Form.Group>
                         <Form.Group controlId="Name">
                             <Form.Label>Name:</Form.Label>
-                            <Form.Control name="Name" onChange={this.setValue} type="text" />
+                            <Form.Control name="Name" onChange={this.setValue} type="text" placeholder="ex. Red Shirt"/>
                         </Form.Group>
                         <Form.Group controlId="Cost">
                             <Form.Label>Cost:</Form.Label>
-                            <Form.Control name="Cost" onChange={this.setValue} type="text" placeholder="$$$" />
+                            <Form.Control name="Cost" onChange={this.setValue} type="text" placeholder="$$$" placeholder="ex. $5.50"/>
                         </Form.Group>
                         <Form.Group controlId="Description">
                             <Form.Label>Description:</Form.Label>
-                            <Form.Control name="Description" onChange={this.setValue} type="text"  />
+                            <Form.Control name="Description" onChange={this.setValue} type="text" placeholder="ex. A soft red shirt from American Eagle."/>
                         </Form.Group>
                         <Form.Group controlId="Display">
                             <Form.Label>Image To Display:</Form.Label>

@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemDisplay from '../ItemDisplay/itemDisplay.componenet';
+import ItemDisplay from '../ItemDisplay/itemDisplay.component';
 import { Container, Row, Col, Button, ButtonGroup, Dropdown, DropdownButton} from 'react-bootstrap';
 
 export default class ItemDisplayContainer extends React.Component {
