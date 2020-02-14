@@ -39,7 +39,7 @@ export default class ItemDisplayContainer extends React.Component {
         const sortItems = {
             Color: this.state.Color,
             Price: this.state.Password,
-            Category: this.state.Category
+            Type: this.state.Type
 
         }
         fetch(`api/sort`, {
