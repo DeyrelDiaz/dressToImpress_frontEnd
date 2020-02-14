@@ -6,6 +6,10 @@ export default class ItemDisplay extends React.Component {
     constructor(props) {
         super(props);
 
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        console.log('user', user);
+
         this.state = {
             username: '',
             date: '',
