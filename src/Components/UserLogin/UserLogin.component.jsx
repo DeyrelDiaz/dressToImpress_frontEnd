@@ -40,18 +40,26 @@ export default class UserLogin extends React.Component {
             },
         }).then((res) => res.json())
         .then((result) => {
-            if (result.success == true)
+            if (result.number == 1)
             {
+                console.log('result.number :', result.number);
                 localStorage.setItem('user', JSON.stringify(result.user)); 
                 alert('Login Successful! Welcome '+ newItem.Username +'!')
                 this.props.history.push('/home')
 
             }
-            else{
+            else if (result.number == 0 )
+            {
+                console.log('result.number :', result.number);
                 console.log('User login failed.')
-                alert('Your login information is not correct! Please register as a user.')
+                alert('The user entered does not exist. Please register as a user.')
                 this.props.history.push('/register')
 
+            }
+            else if (result.number == 2)
+            {
+                console.log('User login failed.')
+                alert('Your username/password is not correct! Please try again.')
             }
             
         },
