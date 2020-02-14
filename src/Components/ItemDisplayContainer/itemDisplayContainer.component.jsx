@@ -10,7 +10,7 @@ export default class ItemDisplayContainer extends React.Component {
         this.state = {
             Color: '',
             Price: '',
-            Category: ''
+            Type: ''
         };    }
     
     displayItems(item, index) {
@@ -21,9 +21,16 @@ export default class ItemDisplayContainer extends React.Component {
         )
     }
 
-    setValue = event => {
-        // if (event.targer.innerText == "")
-       // console.log('object :', object);
+    setColorValue = event => {
+        this.state.Color = event.target.innerText;
+    }
+
+    setTypeValue = event => {
+        this.state.Type = event.target.innerText;
+    }
+
+    setPriceValue = event => {
+        this.state.Price = event.target.innerText;
     }
 
     onSubmit(event) {
@@ -35,7 +42,6 @@ export default class ItemDisplayContainer extends React.Component {
             Category: this.state.Category
 
         }
-        // console.log(UserLogin);
         fetch(`api/sort`, {
             method: 'GET',
             headers: {
@@ -68,22 +74,22 @@ export default class ItemDisplayContainer extends React.Component {
                     <Dropdown.Item onClick={this.setValue} >Red</Dropdown.Item>
                     <Dropdown.Item onClick={this.setValue} >Orange</Dropdown.Item>
                     <Dropdown.Item  onClick={this.setValue} >Yellow</Dropdown.Item>
-                    <Dropdown.Item eventKey="Green" onClick={this.setValue} >Green</Dropdown.Item>
-                    <Dropdown.Item eventKey="Blue" onClick={this.setValue} >Blue</Dropdown.Item>
-                    <Dropdown.Item eventKey="Indigo" onClick={this.setValue} >Pink</Dropdown.Item>
-                    <Dropdown.Item eventKey="Violet" onClick={this.setValue} >Violet</Dropdown.Item>
-                    <Dropdown.Item eventKey="White" onClick={this.setValue} >White</Dropdown.Item>
-                    <Dropdown.Item eventKey="Black" onClick={this.setValue} >Black</Dropdown.Item>
+                    <Dropdown.Item eventKey="Green" onClick={this.setColorValue} >Green</Dropdown.Item>
+                    <Dropdown.Item eventKey="Blue" onClick={this.setColorValue} >Blue</Dropdown.Item>
+                    <Dropdown.Item eventKey="Indigo" onClick={this.setColorValue} >Pink</Dropdown.Item>
+                    <Dropdown.Item eventKey="Violet" onClick={this.setColorValue} >Violet</Dropdown.Item>
+                    <Dropdown.Item eventKey="White" onClick={this.setColorValue} >White</Dropdown.Item>
+                    <Dropdown.Item eventKey="Black" onClick={this.setColorValue} >Black</Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Sort by Price" id="bg-vertical-dropdown-2" variant = ""  onClick ={e => this.setValue(e)} >
-                    <Dropdown.Item eventKey="ASC">Low to High</Dropdown.Item>
-                    <Dropdown.Item eventKey="DESC">High to Low</Dropdown.Item>
+                <DropdownButton as={ButtonGroup} title="Sort by Price" id="bg-vertical-dropdown-2" variant = "" >
+                    <Dropdown.Item eventKey="ASC" onClick={this.setPriceValue}>Low to High</Dropdown.Item>
+                    <Dropdown.Item eventKey="DESC" onClick={this.setPriceValue}>High to Low</Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Sort by Category" id="bg-vertical-dropdown-3" variant = ""  onSelect={this.setValue} >
-                    <Dropdown.Item eventKey="Dress">Dress</Dropdown.Item>
-                    <Dropdown.Item eventKey="Skirt">Skirt</Dropdown.Item>
-                    <Dropdown.Item eventKey="Pant">Pant</Dropdown.Item>
-                    <Dropdown.Item eventKey="Shirt">Shirt</Dropdown.Item>
+                <DropdownButton as={ButtonGroup} title="Sort by Type" id="bg-vertical-dropdown-3" variant = "" >
+                    <Dropdown.Item eventKey="Dress" onClick={this.setTypeValue}>Dress</Dropdown.Item>
+                    <Dropdown.Item eventKey="Skirt" onClick={this.setTypeValue}>Skirt</Dropdown.Item>
+                    <Dropdown.Item eventKey="Pant" onClick={this.setTypeValue}>Pant</Dropdown.Item>
+                    <Dropdown.Item eventKey="Shirt" onClick={this.setTypeValue}>Shirt</Dropdown.Item>
                 </DropdownButton>
                 <Button variant="info" type="submit">Sort</Button>
                 </ButtonGroup>
