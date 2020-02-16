@@ -43,7 +43,7 @@ export default class ItemDisplayContainer extends React.Component {
             Type: this.state.Type
 
         }
-        fetch(`api/sort`, {
+        fetch('api/itemsSorted', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
