@@ -6,24 +6,40 @@ export default class ItemDisplay extends React.Component {
     constructor(props) {
         super(props);
 
+<<<<<<< HEAD
         const user = JSON.parse(localStorage.getItem('user'));
 
         console.log('user', user);
+=======
+        console.log('item dis', this.props);
+>>>>>>> 699bf932e97654e4cae29a669a53ad7239863845
 
         this.state = {
             username: '',
             date: '',
+            itemId: -1
         };
+    }
+
+    componentDidMount() {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        this.setState({
+            username: user.user
+        })
     }
 
     onSubmit(event) {
         console.log("Attempting to buy item...")
         event.preventDefault();
-        // const user = JSON.parse(localStorage.getItem('user'));
+
         const newOrder = {
-            username: 'shahnv',
-            date: '1/2/2020'
+            username: this.state.username,
+            date: new Date(),
         }
+
+        console.log('new Order', newOrder);
+
         console.log(newOrder);
         fetch('/api/order', {
             method: 'POST',
@@ -56,8 +72,9 @@ export default class ItemDisplay extends React.Component {
                 <Card>
                     <Card.Body>
                         <Card.Img src={this.props.imgUrl} />
-                        <Card.Title>{this.props.title}</Card.Title>
+                        <Card.Title>{this.props.name}</Card.Title>
                         <Card.Text>{this.props.text}</Card.Text>
+                        <Card.Footer>{this.props.cost}</Card.Footer>
                         <Button variant="info" type="Button" onClick = {this.onSubmit}>Buy Now!</Button>
                     </Card.Body>
                 </Card>

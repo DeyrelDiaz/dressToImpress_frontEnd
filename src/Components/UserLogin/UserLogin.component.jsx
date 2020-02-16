@@ -42,9 +42,10 @@ export default class UserLogin extends React.Component {
         .then((result) => {
             if (result.number == 1)
             {
-                console.log('result.number :', result.number);
-                localStorage.setItem('user', JSON.stringify(result.user)); 
-                alert('Login Successful! Welcome '+ newItem.Username +'!')
+                console.log(result);
+                localStorage.setItem('user', JSON.stringify(result.username)); 
+                console.log('loc storage', localStorage);
+                // alert('Login Successful! Welcome '+ newItem.Username +'!')
                 this.props.history.push('/home')
 
             }
