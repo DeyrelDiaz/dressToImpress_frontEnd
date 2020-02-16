@@ -17,21 +17,27 @@ export default class ItemDisplayContainer extends React.Component {
         console.log('items being mapped', item);
         return (
             <Col>
-                <ItemDisplay id={item.ID} title={item.Name} text={item.Description} imgUrl={item.Display} />
+                <ItemDisplay id={item.ID} title={item.Name} text={item.Description} imgUrl={item.Display} cost={item.Price} />
             </Col>
         )
     }
 
     setColorValue = event => {
         this.state.Color = event.target.innerText;
+        console.log('this.state :', this.state);
+
     }
 
     setTypeValue = event => {
         this.state.Type = event.target.innerText;
+        console.log('this.state :', this.state);
+
     }
 
     setPriceValue = event => {
         this.state.Price = event.target.innerText;
+        console.log('this.state :', this.state);
+
     }
 
     onSubmit(event) {
@@ -39,15 +45,16 @@ export default class ItemDisplayContainer extends React.Component {
         event.preventDefault();
         const sortItems = {
             Color: this.state.Color,
-            Price: this.state.Password,
+            Price: this.state.Price,
             Type: this.state.Type
-
         }
+        console.log('sortItems :', sortItems);
         fetch('api/itemsSorted', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
+            body: JSON.stringify(sortItems)
         }).then((res) => res.json())
         .then((result) => {
             if (result.success == true)
@@ -72,9 +79,9 @@ export default class ItemDisplayContainer extends React.Component {
             <div>
                 <ButtonGroup >
                 <DropdownButton as={ButtonGroup} title="Sort by Color" id="bg-vertical-dropdown-1" variant = "" >
-                    <Dropdown.Item onClick={this.setValue} >Red</Dropdown.Item>
-                    <Dropdown.Item onClick={this.setValue} >Orange</Dropdown.Item>
-                    <Dropdown.Item  onClick={this.setValue} >Yellow</Dropdown.Item>
+                    <Dropdown.Item eventKey="Red" onClick={this.setColorValue} >Red</Dropdown.Item>
+                    <Dropdown.Item eventKey="Orange" onClick={this.setColorValue} >Orange</Dropdown.Item>
+                    <Dropdown.Item eventKey="Yellow" onClick={this.setColorValue} >Yellow</Dropdown.Item>
                     <Dropdown.Item eventKey="Green" onClick={this.setColorValue} >Green</Dropdown.Item>
                     <Dropdown.Item eventKey="Blue" onClick={this.setColorValue} >Blue</Dropdown.Item>
                     <Dropdown.Item eventKey="Indigo" onClick={this.setColorValue} >Pink</Dropdown.Item>
@@ -92,7 +99,7 @@ export default class ItemDisplayContainer extends React.Component {
                     <Dropdown.Item eventKey="Pant" onClick={this.setTypeValue}>Pant</Dropdown.Item>
                     <Dropdown.Item eventKey="Shirt" onClick={this.setTypeValue}>Shirt</Dropdown.Item>
                 </DropdownButton>
-                <Button variant="info" type="submit">Sort</Button>
+                <Button variant="info" type="Button" onClick = {this.onSubmit} >Sort!</Button>
                 </ButtonGroup>
                 <Container>
                     <Row>

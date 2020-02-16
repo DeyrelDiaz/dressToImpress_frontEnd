@@ -11,15 +11,14 @@ export default class ItemDisplay extends React.Component {
         this.state = {
             username: '',
             date: '',
-            itemId: -1
         };
     }
 
     componentDidMount() {
-        const user = JSON.parse(localStorage.getItem('user'));
+        // const user = JSON.parse(localStorage.getItem('user'));
 
         this.setState({
-            username: user.user
+            // username: user.user
         })
     }
 
@@ -28,7 +27,7 @@ export default class ItemDisplay extends React.Component {
         event.preventDefault();
 
         const newOrder = {
-            username: this.state.username,
+            // username: this.state.username,
             date: new Date(),
         }
 
@@ -69,6 +68,7 @@ export default class ItemDisplay extends React.Component {
                         <Card.Title>{this.props.name}</Card.Title>
                         <Card.Text>{this.props.text}</Card.Text>
                         <Card.Footer>{this.props.cost}</Card.Footer>
+                        {this.props.cost}
                         <Button variant="info" type="Button" onClick = {this.onSubmit}>Buy Now!</Button>
                     </Card.Body>
                 </Card>
