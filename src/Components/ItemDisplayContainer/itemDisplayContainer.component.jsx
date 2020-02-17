@@ -15,32 +15,33 @@ export default class ItemDisplayContainer extends React.Component {
     
     displayItems(item, index) {
         console.log('items being mapped', item);
+
         return (
             <Col>
-                <ItemDisplay id={item.ID} title={item.Name} text={item.Description} imgUrl={item.Display} cost={item.Price} />
+                <ItemDisplay id={item.ID} title={item.Name} text={item.Description} imgUrl={item.Display} cost={item.Cost} />
             </Col>
         )
     }
 
     setColorValue = event => {
-        this.state.Color = event.target.innerText;
+        this.setState({Color : event.target.innerText});
         console.log('this.state :', this.state);
 
     }
 
     setTypeValue = event => {
-        this.state.Type = event.target.innerText;
+        this.setState({Type : event.target.innerText});
         console.log('this.state :', this.state);
 
     }
 
     setPriceValue = event => {
-        this.state.Price = event.target.innerText;
+        this.setState({Price : event.target.innerText});
         console.log('this.state :', this.state);
 
     }
 
-    onSubmit(event) {
+    onSubmit(event, state) {
         console.log("on submit works")
         console.log("this.state: ", this.state)
         event.preventDefault();

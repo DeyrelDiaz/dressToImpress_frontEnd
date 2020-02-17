@@ -17,7 +17,9 @@ export default class Register extends React.Component {
             number: '',
             street: '',
             state: '',
-            zip: ''
+            zip: '',
+            cardnumber: '',
+            expirydate: ''
         };
 
         this.setValue = this.setValue.bind(this);
@@ -42,7 +44,9 @@ export default class Register extends React.Component {
             street: this.state.street,
             city: this.state.city,
             state: this.state.state,
-            zip: this.state.zip
+            zip: this.state.zip,
+            cardnumber: this.state.cardnumber,
+            expirydate: this.state.expirydate
         }
         console.log(newCust);
         fetch('/api/user', {
@@ -55,10 +59,15 @@ export default class Register extends React.Component {
             .then((result) => {
                 console.log(result);
                 if (result.success == true) {
-                    this.props.history.push('/home');
-                }
-                else {
                     alert('User already exists! Please login.')
+                    this.props.history.push('/');
+                }
+                else if (result.number == 1){
+                    alert('User already exists! Please login.')
+                }
+                else if (result.number == 2)
+                {
+                    alert('One or more text fields are empty. Please fill them out and try again.')
                 }
             })
         }
@@ -92,7 +101,7 @@ export default class Register extends React.Component {
                         </Form.Group>
                         <Form.Group controlId="number">
                             <Form.Label>Number:</Form.Label>
-                            <Form.Control name="number" onChange={this.setValue} type="text" placeholder="Enter Street Number."/>
+                            <Form.Control name="number" onChange={this.setValue} type="number" placeholder="Enter Street Number."/>
                         </Form.Group>
                         <Form.Group controlId="street">
                             <Form.Label>Street:</Form.Label>
@@ -109,6 +118,14 @@ export default class Register extends React.Component {
                         <Form.Group controlId="zip">
                             <Form.Label>Zip Code:</Form.Label>
                             <Form.Control name="zip" onChange={this.setValue} type="text" />
+                        </Form.Group>
+                        <Form.Group controlId="cardnumber">
+                            <Form.Label>Credit Card Number:</Form.Label>
+                            <Form.Control name="cardnumber" onChange={this.setValue} type="number" />
+                        </Form.Group>
+                        <Form.Group controlId="expirydate">
+                            <Form.Label>Credit Card Expiry Date:</Form.Label>
+                            <Form.Control name="expirydate" onChange={this.setValue} type="date" />
                         </Form.Group>
                         <Button variant="info" type="submit" >Register</Button>
                     </Form>
