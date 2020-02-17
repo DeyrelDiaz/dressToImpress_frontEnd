@@ -42,9 +42,10 @@ export default class ItemDisplayContainer extends React.Component {
 
     onSubmit(event) {
         console.log("on submit works")
+        console.log("this.state: ", this.state)
         event.preventDefault();
         const sortItems = {
-            Color: this.state.Color,
+            color: this.state.Color,
             Price: this.state.Price,
             Type: this.state.Type
         }
