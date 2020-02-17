@@ -51,16 +51,13 @@ export default class UserLogin extends React.Component {
             }
             else if (result.number == 0 )
             {
-                console.log('result.number :', result.number);
                 console.log('User login failed.')
-                alert('The user entered does not exist. Please register as a user.')
-                this.props.history.push('/register')
-
+                alert('Your username/password is not correct! If you do not already have an account, please register.')
             }
             else if (result.number == 2)
             {
                 console.log('User login failed.')
-                alert('Your username/password is not correct! Please try again.')
+                alert('Your username/password is not correct! If you do not already have an account, please register.')
             }
             
         },

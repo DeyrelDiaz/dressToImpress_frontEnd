@@ -21,7 +21,7 @@ export default class ItemDisplay extends React.Component {
         const newOrder = {
             date: new Date(),
             id: event.target.value,
-            username: 'sneakyUser'
+            username: 'tester'
         }
         console.log('new Order', newOrder);
         fetch('/api/order', {
@@ -35,6 +35,8 @@ export default class ItemDisplay extends React.Component {
                 console.log(result);
                 if (result.success == true) {
                     alert('You successfully bought the item! Enjoy your new purchase!')
+                    // this.props.history.push('/home');
+
                 }
                 else if (result.number == 2) 
                 {
