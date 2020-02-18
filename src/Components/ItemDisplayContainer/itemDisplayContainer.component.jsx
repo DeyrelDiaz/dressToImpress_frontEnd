@@ -13,7 +13,7 @@ export default class ItemDisplayContainer extends React.Component {
             Type: ''
         };    }
     
-    displayItems(item, index) {
+    displayItems(item) {
         console.log('items being mapped', item);
 
         return (
@@ -41,7 +41,7 @@ export default class ItemDisplayContainer extends React.Component {
 
     }
 
-    onSubmit(event, state) {
+    onSubmit(event) {
         console.log("on submit works")
         console.log("this.state: ", this.state)
         event.preventDefault();

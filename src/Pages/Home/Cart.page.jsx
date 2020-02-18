@@ -1,23 +1,41 @@
 import React from 'react';
-import ItemDisplayContainer from '../../Components/ItemDisplayContainer/itemDisplayContainer.component';
+import CartDisplayContainer from '../../Components/CartDisplayContainer/CartDisplayContainer.component';
 import { Navbar, Nav } from 'react-bootstrap';
 
-
-export default class HomePage extends React.Component {
+export default class CartPage extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            cartitems: []
+        }
     }
 
     componentDidMount() {
-        fetch('/api/items', {
-            method: 'GET',
+        const params = {
+            username: 'tester'
+        }
+
+        const url = '/api/cart';
+        var esc = encodeURIComponent;
+        var query = Object.keys(params)
+            .map(k => esc(k) + '=' + esc(params[k]))
+            .join('&');
+
+        var request = new Request(url + "?" + query, {
+            method: 'GET'
+        })
+
+        fetch(request, {
             headers: {
                 'Content-Type': 'application/json'
             },
         }).then((res) => res.json())
         .then((result) => {
-            if (result.success == true) {
-                localStorage.setItem('items', JSON.stringify(result.items));
+            if (result.success) {
+                this.setState({
+                    cartitems: result.items
+                })
             }
         },
         (err) => {
@@ -29,7 +47,6 @@ export default class HomePage extends React.Component {
 
         return(
             <div>
-
                 <Navbar bg="info" variant="dark">
                     <Navbar.Brand>Dress To Impress</Navbar.Brand>
                     <Nav>
@@ -39,8 +56,7 @@ export default class HomePage extends React.Component {
 
                     </Nav>
                 </Navbar>
-                <ItemDisplayContainer/>
-                
+                <CartDisplayContainer cartitems={this.state.cartitems}/>
             </div>
         )
     }
