@@ -24,24 +24,22 @@ export default class ItemDisplayContainer extends React.Component {
         this.setColorValue = this.setColorValue.bind(this);
         this.setTypeValue = this.setTypeValue.bind(this);
         this.setPriceValue = this.setPriceValue.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     setColorValue = event => {
         this.setState({Color : event.target.innerText});
         console.log('this.state :', this.state);
-
     }
 
     setTypeValue = event => {
         this.setState({Type : event.target.innerText});
         console.log('this.state :', this.state);
-
     }
 
     setPriceValue = event => {
         this.setState({Price : event.target.innerText});
         console.log('this.state :', this.state);
-
     }
 
     onSubmit(event) {
@@ -63,7 +61,7 @@ export default class ItemDisplayContainer extends React.Component {
         .then((result) => {
             if (result.success == true)
             {
-
+                alert('sorted')
             }
             else{
                 alert('Cannot sort by these parameters.')
@@ -103,7 +101,7 @@ export default class ItemDisplayContainer extends React.Component {
                     <Dropdown.Item eventKey="Pant" onClick={this.setTypeValue}>Pant</Dropdown.Item>
                     <Dropdown.Item eventKey="Shirt" onClick={this.setTypeValue}>Shirt</Dropdown.Item>
                 </DropdownButton>
-                <Button variant="info" type="Button" onClick = {this.onSubmit} >Sort!</Button>
+                <Button variant="info" type="submit" >Sort!</Button>
                 </ButtonGroup>
                 <Container>
                     <Row>
