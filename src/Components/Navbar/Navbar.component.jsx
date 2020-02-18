@@ -13,9 +13,9 @@ export default class NavBar extends React.Component {
                 <Navbar bg="info" variant="dark">
                     <Navbar.Brand>Dress To Impress</Navbar.Brand>
                     <Nav>
-                        <Nav.Link href="/">User Login</Nav.Link>
+                        {/* <Nav.Link href="/">User Login</Nav.Link> */}
                         <Nav.Link href="/home">Home</Nav.Link>
-                        <Nav.Link href="/register">Add User</Nav.Link>
+                        {/* <Nav.Link href="/register">Register</Nav.Link> */}
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
                     </Nav>
                 </Navbar>

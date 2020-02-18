@@ -3,8 +3,7 @@ import React from 'react';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
-// console.log("im in here (top)")
-
+import { Navbar, Nav } from 'react-bootstrap';
 
 export default class UserLogin extends React.Component {
     constructor(props) {
@@ -70,7 +69,16 @@ export default class UserLogin extends React.Component {
     render() {
         // console.log("im in here (bottom)")
         return(
-            <div>
+            <div> 
+                 <Navbar bg="info" variant="dark">
+                    <Navbar.Brand>Dress To Impress</Navbar.Brand>
+                    <Nav>
+                        <Nav.Link href="/">User Login</Nav.Link>
+                        <Nav.Link href="/register">Register</Nav.Link>
+                        <Nav.Link href="/home"></Nav.Link>
+                        <Nav.Link href="/newItem"></Nav.Link>
+                    </Nav>
+                </Navbar>    
                 <Container>
                     <Form onSubmit={this.onSubmit}>
                         <Form.Group controlId="Username">

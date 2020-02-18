@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
@@ -61,6 +62,13 @@ export default class NewItem extends React.Component {
     render() {
         return(
             <div>
+                    <Navbar bg="info" variant="dark">
+                    <Navbar.Brand>Dress To Impress</Navbar.Brand>
+                    <Nav>
+                        <Nav.Link href="/home">Home</Nav.Link>
+                        <Nav.Link href="/newItem">Add Item</Nav.Link>
+                    </Nav>
+                </Navbar>
                 <Container>
                     <Form onSubmit={this.onSubmit}>
                         <Form.Group controlId="Color">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
@@ -76,7 +77,15 @@ export default class Register extends React.Component {
 
     render() {
         return(
-            <div>
+            <div><Navbar bg="info" variant="dark">
+            <Navbar.Brand>Dress To Impress</Navbar.Brand>
+            <Nav>
+                <Nav.Link href="/">User Login</Nav.Link>
+                <Nav.Link href="/register">Register</Nav.Link>
+                <Nav.Link href="/home"></Nav.Link>
+                <Nav.Link href="/newItem"></Nav.Link>
+            </Nav>
+        </Navbar>    
                 <Container>
                     <Form onSubmit={this.onSubmit}>
                         <Form.Group controlId="username">
