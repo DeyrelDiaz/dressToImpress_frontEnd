@@ -16,7 +16,6 @@ export default class UserLogin extends React.Component {
 
         this.setValue = this.setValue.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        // this.render()
     }
 
     setValue(event) {
@@ -31,7 +30,6 @@ export default class UserLogin extends React.Component {
             Password: this.state.Password,
 
         }
-        // console.log(UserLogin);
         fetch(`api/user?username=${this.state.Username}&password=${this.state.Password}`, {
             method: 'GET',
             headers: {
@@ -44,7 +42,6 @@ export default class UserLogin extends React.Component {
                 console.log(result);
                 localStorage.setItem('user', JSON.stringify(result.username)); 
                 console.log('loc storage', localStorage);
-                // alert('Login Successful! Welcome '+ newItem.Username +'!')
                 this.props.history.push('/home')
 
             }
@@ -67,7 +64,6 @@ export default class UserLogin extends React.Component {
 
 
     render() {
-        // console.log("im in here (bottom)")
         return(
             <div> 
                  <Navbar bg="info" variant="dark">
@@ -75,8 +71,8 @@ export default class UserLogin extends React.Component {
                     <Nav>
                         <Nav.Link href="/">User Login</Nav.Link>
                         <Nav.Link href="/register">Register</Nav.Link>
-                        <Nav.Link href="/home"></Nav.Link>
-                        <Nav.Link href="/newItem"></Nav.Link>
+                        <Nav.Link href="/home">.</Nav.Link>
+                        <Nav.Link href="/newItem">.</Nav.Link>
                     </Nav>
                 </Navbar>    
                 <Container>

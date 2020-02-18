@@ -21,6 +21,9 @@ export default class ItemDisplayContainer extends React.Component {
                 <ItemDisplay id={item.ID} title={item.Name} text={item.Description} imgUrl={item.Display} cost={item.Cost} />
             </Col>
         )
+        this.setColorValue = this.setColorValue.bind(this);
+        this.setTypeValue = this.setTypeValue.bind(this);
+        this.setPriceValue = this.setPriceValue.bind(this);
     }
 
     setColorValue = event => {
@@ -43,7 +46,6 @@ export default class ItemDisplayContainer extends React.Component {
 
     onSubmit(event) {
         console.log("on submit works")
-        console.log("this.state: ", this.state)
         event.preventDefault();
         const sortItems = {
             color: this.state.Color,
