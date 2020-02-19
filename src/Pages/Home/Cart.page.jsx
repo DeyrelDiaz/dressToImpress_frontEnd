@@ -62,7 +62,7 @@ export default class CartPage extends React.Component {
                 console.log(result);
                 if (result.success == true) {
                     alert('You successfully bought all items! Enjoy your new purchase!')
-                    // this.props.history.push('/home');
+                    window.location.reload();
                 }
                 else if (result.number == 2) 
                 {
