@@ -72,7 +72,6 @@ export default class ItemDisplayContainer extends React.Component {
             console.log('res in sorted', result);
             if (result.success == true)
             {
-                alert('sorted')
                 localStorage.removeItem('items');
                 localStorage.setItem('items', JSON.stringify(result.items));
                 window.location.reload();

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Button, Card } from 'react-bootstrap';
-
+// import {Pictures} from '../../Pictures';
 // import styles from './styles.css';
 
 export default class ItemDisplay extends React.Component {
@@ -48,7 +48,7 @@ export default class ItemDisplay extends React.Component {
     render() {
         return(
             <div>
-                <Card>
+                <Card style={{ width: '18rem' }}>
                     <Card.Body>
                         <Card.Img src={this.props.imgUrl} />
                         <Card.Title>{this.props.title}</Card.Title>
