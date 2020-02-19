@@ -6,13 +6,19 @@ export default class ItemDisplayContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.displayItems = this.displayItems.bind(this);
         this.state = {
             Color: '',
             Price: '',
             Type: ''
-        };    }
+        };    
     
+        this.displayItems = this.displayItems.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.setColorValue = this.setColorValue.bind(this);
+        this.setTypeValue = this.setTypeValue.bind(this);
+        this.setPriceValue = this.setPriceValue.bind(this);
+    }
+
     displayItems(item) {
         console.log('items being mapped', item);
 
@@ -20,12 +26,7 @@ export default class ItemDisplayContainer extends React.Component {
             <Col>
                 <ItemDisplay id={item.ID} title={item.Name} text={item.Description} imgUrl={item.Display} cost={item.Cost} />
             </Col>
-        )
-        this.setColorValue = this.setColorValue.bind(this);
-        this.setTypeValue = this.setTypeValue.bind(this);
-        this.setPriceValue = this.setPriceValue.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
+        )    }
 
     setColorValue = event => {
         this.setState({Color : event.target.innerText});
@@ -45,23 +46,36 @@ export default class ItemDisplayContainer extends React.Component {
     onSubmit(event) {
         console.log("on submit works")
         event.preventDefault();
-        const sortItems = {
-            color: this.state.Color,
+
+         const params = {
+            Color: this.state.Color,
             Price: this.state.Price,
             Type: this.state.Type
         }
-        console.log('sortItems :', sortItems);
-        fetch('api/itemsSorted', {
-            method: 'GET',
+
+        const url = '/api/item/sorted';
+        var esc = encodeURIComponent;
+        var query = Object.keys(params)
+            .map(k => esc(k) + '=' + esc(params[k]))
+            .join('&');
+
+        var request = new Request(url + "?" + query, {
+            method: 'GET'
+        })
+
+        fetch(request, {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(sortItems)
         }).then((res) => res.json())
         .then((result) => {
+            console.log('res in sorted', result);
             if (result.success == true)
             {
                 alert('sorted')
+                localStorage.removeItem('items');
+                localStorage.setItem('items', JSON.stringify(result.items));
+                window.location.reload();
             }
             else{
                 alert('Cannot sort by these parameters.')
@@ -101,7 +115,7 @@ export default class ItemDisplayContainer extends React.Component {
                     <Dropdown.Item eventKey="Pant" onClick={this.setTypeValue}>Pant</Dropdown.Item>
                     <Dropdown.Item eventKey="Shirt" onClick={this.setTypeValue}>Shirt</Dropdown.Item>
                 </DropdownButton>
-                <Button variant="info" type="submit" >Sort!</Button>
+                <Button variant="info" type="button" onClick={this.onSubmit}>Sort!</Button>
                 </ButtonGroup>
                 <Container>
                     <Row>

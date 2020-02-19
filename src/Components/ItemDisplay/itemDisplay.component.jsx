@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Button, Card } from 'react-bootstrap';
 
-import styles from './styles.css';
-
 export default class ItemDisplay extends React.Component {
     constructor(props) {
         super(props);
