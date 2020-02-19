@@ -16,32 +16,27 @@ export default class ItemDisplay extends React.Component {
     onSubmit(event) {
 
         event.preventDefault();
-        const newOrder = {
-            date: new Date(),
+        const deleteCartItem = {
             id: event.target.value,
             username: 'tester'
         }
-        console.log('new Order', newOrder);
-        fetch('/api/order', {
-            method: 'POST',
+        console.log('deleteCartItem', deleteCartItem);
+        fetch('/api/cart', {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newOrder)
+            body: JSON.stringify(deleteCartItem)
         }).then((res) => res.json())
             .then((result) => {
                 console.log(result);
-                if (result.success == true) {
-                    alert('You successfully bought the item! Enjoy your new purchase!')
-                    // this.props.history.push('/home');
-                }
-                else if (result.number == 2) 
+                if (result.success == true) 
                 {
-                    alert('There was an error when trying to buy item! Please enter a shipping address and try again.')
+                    alert('You have successfully deleted the item from your cart.')
                 }
-                else if (result.number == 1) 
+                else
                 {
-                    alert('There was an error when trying to buy item! Please enter a credit card and try again.')
+                    alert('There was an error when trying to delete the item.')
                 }
             })
         }
@@ -57,9 +52,9 @@ export default class ItemDisplay extends React.Component {
                         <Card.Title>{this.props.title}</Card.Title>
                         <Card.Text>{this.props.text}</Card.Text>
                         <Card.Footer>${this.props.cost}</Card.Footer>
+                        <Button value={this.props.id} variant='info' onClick = {this.onSubmit}>Delete from Cart</Button>
                     </Card.Body>
                 </Card>
-                <Button value={this.props.id} variant='info' type='submit' onClick = {this.onSubmit}>Buy Cart Items</Button>
             </div>
         )
     }

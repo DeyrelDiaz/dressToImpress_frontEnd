@@ -1,6 +1,6 @@
 import React from 'react';
 import CartDisplayContainer from '../../Components/CartDisplayContainer/CartDisplayContainer.component';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Button } from 'react-bootstrap';
 
 export default class CartPage extends React.Component {
     constructor(props) {
@@ -43,6 +43,38 @@ export default class CartPage extends React.Component {
         })
     }
 
+    onSubmit(event) {
+
+        event.preventDefault();
+        const newOrder = {
+            date: new Date(),
+            username: 'tester'
+        }
+        console.log('new Order', newOrder);
+        fetch('/api/order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+        }).then((res) => res.json())
+            .then((result) => {
+                console.log(result);
+                if (result.success == true) {
+                    alert('You successfully bought all items! Enjoy your new purchase!')
+                    // this.props.history.push('/home');
+                }
+                else if (result.number == 2) 
+                {
+                    alert('There was an error when trying to buy item! Please enter a shipping address and try again.')
+                }
+                else if (result.number == 1) 
+                {
+                    alert('There was an error when trying to buy item! Please enter a credit card and try again.')
+                }
+            })
+        }
+
     render() {
 
         return(
@@ -56,6 +88,7 @@ export default class CartPage extends React.Component {
 
                     </Nav>
                 </Navbar>
+                <Button value={this.props.id} variant='info' type='submit' onClick = {this.onSubmit}>Buy All Items</Button>
                 <CartDisplayContainer cartitems={this.state.cartitems}/>
             </div>
         )

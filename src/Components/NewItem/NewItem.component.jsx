@@ -62,11 +62,13 @@ export default class NewItem extends React.Component {
     render() {
         return(
             <div>
-                    <Navbar bg="info" variant="dark">
+                <Navbar bg="info" variant="dark">
                     <Navbar.Brand>Dress To Impress</Navbar.Brand>
                     <Nav>
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
+                        <Nav.Link href="/cart">Cart</Nav.Link>
+
                     </Nav>
                 </Navbar>
                 <Container>
