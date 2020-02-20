@@ -6,6 +6,57 @@ export default class CardModal extends React.Component {
         super(props);
     }
 
+    displayCardNum(item) {
+        console.log('item being mapped', item);
+
+        return (
+            <Col>
+                <CardModal cardnum={item.CardNumber} />
+            </Col>
+        )    }
+
+        
+    onSubmit(event) {
+        console.log("on submit works")
+
+         const params = {
+            Username: 'tester'
+        }
+
+        const url = '/api/getCard';
+        var esc = encodeURIComponent;
+        var query = Object.keys(params)
+            .map(k => esc(k) + '=' + esc(params[k]))
+            .join('&');
+
+        var request = new Request(url + "?" + query, {
+            method: 'POST'
+        })
+
+        fetch(request, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then((res) => res.json())
+        .then((result) => {
+            console.log('res in sorted', result);
+            if (result.success == true)
+            {
+                localStorage.removeItem('items');
+                localStorage.setItem('items', JSON.stringify(result.items));
+                window.location.reload();
+            }
+            else{
+                alert('Cannot sort by these parameters.')
+                console.log('Cannot sort by these parameters.')
+            }
+            
+        },
+        (err) => {
+            console.log(err);
+        })
+        }
+
 render(){
     return(
         <Modal {...this.props} size="lg" aria-labelledby="addrModal" centered>

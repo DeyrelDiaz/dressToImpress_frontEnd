@@ -8,24 +8,20 @@ export default class UserInfo extends React.Component {
     constructor(props) {
         super(props);
 
-        this.userInfo = JSON.parse(localStorage.getItem('user'));
+        this.username = JSON.parse(localStorage.getItem('user'));
 
         this.state = {
-            Username: this.userInfo,
-            Address: '',
-            CardNumber: '',
-            showEditCardModal: false,
-            showEditAddrModal: false
-            };
+            userinfo: []
+        }
 
-            console.log('user info', this.userInfo);
+            console.log('user info', this.username);
 
             this.showEditAddrModal = this.showEditAddrModal.bind(this);
             this.showEditCardModal = this.showEditCardModal.bind(this);
             this.closeEditAddrModal = this.closeEditAddrModal.bind(this);
             this.closeEditCardModal = this.closeEditCardModal.bind(this);
             this.setValue = this.setValue.bind(this);
-            this.onSubmit = this.onSubmit.bind(this);
+            this.componentDidMount = this.componentDidMount.bind(this);
 
     }
 
@@ -50,36 +46,49 @@ export default class UserInfo extends React.Component {
         this.setState({[event.target.name]: event.target.value});
     }
 
-    onSubmit(event) {
-        console.log("on submit works")
-        event.preventDefault();
-        const newItem = {
-            Color: this.state.Color,
-            ItemType: this.state.ItemType,
-            Name: this.state.Name,
-            Cost: this.state.Cost,
-            Description: this.state.Description,
-            Display: this.state.Display
-                }
-        console.log(newItem);
-        fetch('/api/item', {
-            method: 'POST',
+    componentDidMount() {
+        const params = {
+            username: 'tester'
+        }
+
+        const url = '/api/cart';
+        var esc = encodeURIComponent;
+        var query = Object.keys(params)
+            .map(k => esc(k) + '=' + esc(params[k]))
+            .join('&');
+
+        var request = new Request(url + "?" + query, {
+            method: 'GET'
+        })
+
+        fetch(request, {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newItem)
         }).then((res) => res.json())
-            .then((result) => {
-                console.log(result);
-                if (result.success == true) {
-                    alert('Item Added')
-                  //  this.props.history.push('/home');
-                }
-                else {
-                    alert('Item was not added')
-                }
-            })
-        }
+        .then((result) => {
+            if (result.success) {
+                this.setState({
+                    userinfo: result.items
+                })
+            }
+        },
+        (err) => {
+            console.log(err)
+        })
+    }
+
+    displayAddr(item) {
+        return (
+            <tr>
+            <td>{this.state.Number}</td>
+            <td>{this.state.Street}</td>
+            <td>{this.state.City}</td>
+            <td>{this.state.AddrState}</td>
+            <td>{this.state.ZipCode}</td>
+            </tr>
+        )
+    }
 
     render(){
         return(
@@ -112,11 +121,16 @@ export default class UserInfo extends React.Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                <td>32</td>
+                                {/* <td>32</td>
                                 <td>the Bird</td>
                                 <td>witter</td>
                                 <td>witter</td>
-                                <td>witter</td>
+                                <td>witter</td> */}
+                                <td>{this.state.Number}</td>
+                                <td>{this.state.Street}</td>
+                                <td>{this.state.City}</td>
+                                <td>{this.state.AddrState}</td>
+                                <td>{this.state.ZipCode}</td>
                                 </tr>
                             </tbody>
                         </Table>
