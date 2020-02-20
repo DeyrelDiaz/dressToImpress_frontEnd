@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tabs, Tab, Container, Navbar, Nav, Table} from 'react-bootstrap';
+import { Tabs, Tab, Container, Navbar, Nav, Table, Card} from 'react-bootstrap';
 
 export default class UserInfo extends React.Component {
     constructor(props) {
@@ -23,7 +23,7 @@ export default class UserInfo extends React.Component {
                 <Container>
                 <Tabs id="controlled-tab-example" variant="tabs" >
                     <Tab eventKey="info" title="User Profile" variant="dark">
-                    <Table striped bordered hover variant="dark">
+                    <Table striped bordered hover variant="info">
                             <thead>
                                 <tr>
                                 <th>#</th>
@@ -53,6 +53,16 @@ export default class UserInfo extends React.Component {
                             </tbody>
                         </Table>                    </Tab>
                     <Tab eventKey="orders" title="Orders" variant="dark">
+                        <div>
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Body>
+                                    <Card.Img src={this.props.imgUrl} />
+                                    <Card.Title>{this.props.title}</Card.Title>
+                                    <Card.Text>{this.props.text}</Card.Text>
+                                    <Card.Footer>${this.props.cost}</Card.Footer>
+                                </Card.Body>
+                            </Card>
+                        </div>
                     </Tab>
                 </Tabs>
                 </Container>

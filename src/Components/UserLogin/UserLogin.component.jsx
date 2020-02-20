@@ -65,30 +65,35 @@ export default class UserLogin extends React.Component {
 
     render() {
         return(
-            <div> 
-                 <Navbar bg="info" variant="dark">
-                    <Navbar.Brand>Dress To Impress</Navbar.Brand>
-                    <Nav>
-                        <Nav.Link href="/">User Login</Nav.Link>
-                        <Nav.Link href="/register">Register</Nav.Link>
-                        <Nav.Link href="/home">.</Nav.Link>
-                        <Nav.Link href="/newItem">.</Nav.Link>
-                    </Nav>
-                </Navbar>    
-                <Container>
-                    <Form onSubmit={this.onSubmit}>
-                        <Form.Group controlId="Username">
-                            <Form.Label>Username:</Form.Label>
-                            <Form.Control name="Username" onChange={this.setValue} type="text" placeholder="Enter Username" />
-                        </Form.Group>
-                        <Form.Group controlId="Password">
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control name="Password" onChange={this.setValue} type="password" placeholder="Enter Password" />
-                        </Form.Group>                
-                        <Button variant="info" type="submit" >Login!</Button>
-                    </Form>
-                </Container>
-            </div>
+            // <head>
+            //     <link href='https://fonts.googleapis.com/css?family=Allan' rel='stylesheet'></link>
+            // </head>
+            // <body>
+                <div> 
+                    <Navbar bg="info" variant="dark">
+                        <Navbar.Brand>Dress To Impress</Navbar.Brand>
+                        <Nav>
+                            <Nav.Link href="/">User Login</Nav.Link>
+                            <Nav.Link href="/register">Register</Nav.Link>
+                            <Nav.Link href="/home">.</Nav.Link>
+                            <Nav.Link href="/newItem">.</Nav.Link>
+                        </Nav>
+                    </Navbar>    
+                    <Container>
+                        <Form onSubmit={this.onSubmit} style={{ marginTop: '1rem', marginBottom : '2rem' , fontFamily: "Courier New"  }} >
+                            <Form.Group controlId="Username">
+                                <Form.Label>Username:</Form.Label>
+                                <Form.Control name="Username" onChange={this.setValue} type="text" placeholder="Enter Username" />
+                            </Form.Group>
+                            <Form.Group controlId="Password">
+                                <Form.Label>Password:</Form.Label>
+                                <Form.Control name="Password" onChange={this.setValue} type="password" placeholder="Enter Password" />
+                            </Form.Group>                
+                            <Button variant="info" type="submit" >Login!</Button>
+                        </Form>
+                    </Container>
+                </div>
+            // </body>
         )
     }
 }

@@ -98,9 +98,42 @@ export default class NewItem extends React.Component {
                             <Form.Control name="Display" onChange={this.setValue} type="text"  placeholder="Please enter URL or path"/>
                         </Form.Group>
                         <Button variant="info" type="submit" >Add Item</Button>
+                        <Button variant="info" type="submit" style={{ marginLeft: '2rem' }} >Import</Button>
                     </Form>
                 </Container>
             </div>
         )
     }
 }
+
+
+/*
+
+$(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: "data.txt",
+        dataType: "text",
+        success: function(data) {processData(data);}
+     });
+});
+
+function processData(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(',');
+    var lines = [];
+
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].split(',');
+        if (data.length == headers.length) {
+
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr.push(headers[j]+":"+data[j]);
+            }
+            lines.push(tarr);
+        }
+    }
+    // alert(lines);
+}
+*/
