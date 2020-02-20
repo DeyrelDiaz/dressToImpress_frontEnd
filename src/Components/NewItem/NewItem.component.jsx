@@ -68,7 +68,7 @@ export default class NewItem extends React.Component {
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
                         <Nav.Link href="/cart">Cart</Nav.Link>
-
+                        <Nav.Link href="/user/profile">User Profile</Nav.Link>
                     </Nav>
                 </Navbar>
                 <Container>
