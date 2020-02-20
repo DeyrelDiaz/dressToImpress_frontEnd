@@ -88,7 +88,7 @@ export default class CartPage extends React.Component {
                         <Nav.Link href="/user/profile">User Profile</Nav.Link>
                     </Nav>
                 </Navbar>
-                <Button value={this.props.id} variant='info' type='submit' onClick = {this.onSubmit}>Buy All Items</Button>
+                <Button value={this.props.id} variant='info' type='submit' style={{ marginTop: '1rem', marginBottom : '1rem' }} onClick = {this.onSubmit}>Buy All Items</Button>
                 <CartDisplayContainer cartitems={this.state.cartitems}/>
             </div>
         )

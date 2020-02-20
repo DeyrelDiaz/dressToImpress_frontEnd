@@ -4,6 +4,8 @@ import { Navbar, Nav } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Container } from 'react-bootstrap';
+import ReactFileReader from 'react-file-reader';
+
 
 export default class NewItem extends React.Component {
     constructor(props) {
@@ -19,14 +21,88 @@ export default class NewItem extends React.Component {
             };
 
         this.setValue = this.setValue.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.addItem = this.addItem.bind(this);
+        this.handleFiles = this.handleFiles.bind(this);
     }
 
     setValue(event) {
         this.setState({[event.target.name]: event.target.value});
     }
 
-    onSubmit(event) {
+    handleFiles(files) {
+        var reader = new FileReader();
+        reader.onload = function(e) 
+        {
+            var str = reader.result
+            var bool = true;
+            while(str.length != 0)
+            {
+                str = str.replace("\n", ",")
+
+                var color = str.substring(0, str.indexOf(','))
+                str = str.substring(str.indexOf(',')+1)
+                // this.setState({Color: color})
+
+                var type = str.substring(0, str.indexOf(','))
+                str = str.substring(str.indexOf(',')+1)
+
+
+                var name = str.substring(0, str.indexOf(','))
+                str = str.substring(str.indexOf(',') +1)
+
+
+                var price = str.substring(0, str.indexOf(','))
+                str = str.substring(str.indexOf(',')+1)
+
+
+                var description = str.substring(0, str.indexOf(','))
+                str = str.substring(str.indexOf(',') +1)
+
+                var link = str.substring(0, str.indexOf(','))
+                str = str.substring(str.indexOf(',')+1)
+
+                const newItem = {
+                    Color: color,
+                    ItemType: type,
+                    Name: name,
+                    Cost: price,
+                    Description: description,
+                    Display: link
+                }
+                console.log(newItem);
+                fetch('/api/item', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newItem)
+                }).then((res) => res.json())
+                    .then((result) => {
+                        console.log(result);
+                        if (result.success == true) {
+                            bool = true;
+
+                        }
+                        else {
+                            bool = false;
+                        }
+                    })
+
+            }
+            if(bool)
+            {
+                alert('Items Added')
+            }
+            else
+            {
+                alert('There was an error when adding the items.')
+            }
+
+        }
+        reader.readAsText(files[0]);
+    }
+
+    addItem(event) {
         console.log("on submit works")
         event.preventDefault();
         const newItem = {
@@ -97,7 +173,11 @@ export default class NewItem extends React.Component {
                             <Form.Label>Image To Display:</Form.Label>
                             <Form.Control name="Display" onChange={this.setValue} type="text"  placeholder="Please enter URL or path"/>
                         </Form.Group>
-                        <Button variant="info" type="submit" >Add Item</Button>
+                        <Button variant="info" onClick = {this.addItem} >Add Item</Button>
+                        <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}>
+                            <Button variant="info" style={{ marginTop: '.5rem' }} onClick = {this.importItems}>Import</Button>
+                        </ReactFileReader>
+
                     </Form>
                 </Container>
             </div>

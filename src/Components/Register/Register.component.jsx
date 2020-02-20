@@ -87,8 +87,8 @@ export default class Register extends React.Component {
             </Nav>
         </Navbar>    
                 <Container>
-                    <Form onSubmit={this.onSubmit}>
-                        <Form.Group controlId="username">
+                    <Form onSubmit={this.onSubmit} style={{ marginTop: '1rem', marginBottom : '2rem' }} >
+                        <Form.Group controlId="username"> 
                             <Form.Label>Username:</Form.Label>
                             <Form.Control name="username" onChange={this.setValue} type="text" placeholder="Enter username." />
                         </Form.Group>
@@ -136,7 +136,7 @@ export default class Register extends React.Component {
                             <Form.Label>Credit Card Expiry Date:</Form.Label>
                             <Form.Control name="expirydate" onChange={this.setValue} type="date" />
                         </Form.Group>
-                        <Button variant="info" type="submit" >Register</Button>
+                        <Button variant="info" type="submit" style={{ marginTop: '1rem', marginBottom : '2rem' }} >Register</Button>
                     </Form>
                 </Container>
             </div>

@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Tabs, Tab, Container, Navbar, Nav, Table, Button} from 'react-bootstrap';
+import { Tabs, Tab, Container, Navbar, Nav, Table, Button, Card} from 'react-bootstrap';
 import ModalAddr from './AddrModal.Component';
 import ModalCard from './CardModal.Component';
+
 export default class UserInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -136,6 +137,16 @@ export default class UserInfo extends React.Component {
                         <Button variant="info" onClick={this.showEditCardModal}>Edit Card Information</Button>
                     </Tab>
                     <Tab eventKey="orders" title="Orders" variant="dark">
+                        <div>
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Body>
+                                    <Card.Img src={this.props.imgUrl} />
+                                    <Card.Title>{this.props.title}</Card.Title>
+                                    <Card.Text>{this.props.text}</Card.Text>
+                                    <Card.Footer>${this.props.cost}</Card.Footer>
+                                </Card.Body>
+                            </Card>
+                        </div>
                     </Tab>
                 </Tabs>
                 </Container>
