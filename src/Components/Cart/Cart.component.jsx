@@ -16,7 +16,7 @@ export default class ItemDisplay extends React.Component {
         event.preventDefault();
         const deleteCartItem = {
             id: event.target.value,
-            username: this.userInfo
+            username: 'tester'
         }
         console.log('deleteCartItem', deleteCartItem);
         fetch('/api/cart', {
