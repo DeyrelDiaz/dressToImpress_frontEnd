@@ -7,16 +7,16 @@ export default class ItemDisplay extends React.Component {
         super(props);
         console.log('this.props', this.props);
         console.log("in cart class");
+        this.userInfo = JSON.parse(localStorage.getItem('user'));
 
     }
 
 
     onSubmit(event) {
-
         event.preventDefault();
         const deleteCartItem = {
             id: event.target.value,
-            username: 'tester'
+            username: this.userInfo
         }
         console.log('deleteCartItem', deleteCartItem);
         fetch('/api/cart', {

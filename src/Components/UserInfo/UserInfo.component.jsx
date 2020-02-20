@@ -8,13 +8,17 @@ export default class UserInfo extends React.Component {
     constructor(props) {
         super(props);
 
+        this.userInfo = JSON.parse(localStorage.getItem('user'));
+
         this.state = {
-            Username: 'tester',
+            Username: this.userInfo,
             Address: '',
             CardNumber: '',
             showEditCardModal: false,
             showEditAddrModal: false
             };
+
+            console.log('user info', this.userInfo);
 
             this.showEditAddrModal = this.showEditAddrModal.bind(this);
             this.showEditCardModal = this.showEditCardModal.bind(this);
