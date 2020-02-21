@@ -11,8 +11,9 @@ export default class UserInfo extends React.Component {
         this.username = JSON.parse(localStorage.getItem('user'));
 
         this.state = {
-            userinfo: []
-        }
+            userinfo: {},
+            cardend: -1
+                }
 
             console.log('user info', this.username);
 
@@ -51,7 +52,7 @@ export default class UserInfo extends React.Component {
             username: 'tester'
         }
 
-        const url = '/api/cart';
+        const url = '/api/user/profile';
         var esc = encodeURIComponent;
         var query = Object.keys(params)
             .map(k => esc(k) + '=' + esc(params[k]))
@@ -68,26 +69,20 @@ export default class UserInfo extends React.Component {
         }).then((res) => res.json())
         .then((result) => {
             if (result.success) {
+                console.log('res',result.items[0])
+                //console.log(this.state)
+
                 this.setState({
-                    userinfo: result.items
+                    userinfo: result.items[0],
+                    cardend: result.cardend
                 })
+                console.log("yeah?")
+                 console.log('im the state after',this.state.userinfo)
             }
         },
         (err) => {
             console.log(err)
         })
-    }
-
-    displayAddr(item) {
-        return (
-            <tr>
-            <td>{this.state.Number}</td>
-            <td>{this.state.Street}</td>
-            <td>{this.state.City}</td>
-            <td>{this.state.AddrState}</td>
-            <td>{this.state.ZipCode}</td>
-            </tr>
-        )
     }
 
     render(){
@@ -100,7 +95,6 @@ export default class UserInfo extends React.Component {
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
                         <Nav.Link href="/cart">Cart</Nav.Link>
                         <Nav.Link href="/user/profile">User Profile</Nav.Link>
-
                     </Nav>
                 </Navbar>
                 
@@ -121,16 +115,11 @@ export default class UserInfo extends React.Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                {/* <td>32</td>
-                                <td>the Bird</td>
-                                <td>witter</td>
-                                <td>witter</td>
-                                <td>witter</td> */}
-                                <td>{this.state.Number}</td>
-                                <td>{this.state.Street}</td>
-                                <td>{this.state.City}</td>
-                                <td>{this.state.AddrState}</td>
-                                <td>{this.state.ZipCode}</td>
+                                <td>{this.state.userinfo.Number}</td>
+                                <td>{this.state.userinfo.Street}</td>
+                                <td>{this.state.userinfo.City}</td>
+                                <td>{this.state.userinfo.AddrState}</td>
+                                <td>{this.state.userinfo.Zipcode}</td>
                                 </tr>
                             </tbody>
                         </Table>
@@ -147,7 +136,7 @@ export default class UserInfo extends React.Component {
                             </thead>
                             <tbody>
                                 <tr>
-                                <td>2703</td>
+                                <td>{this.state.cardend}</td>
                                 </tr>
                             </tbody>
                         </Table>

@@ -20,7 +20,8 @@ export default class Register extends React.Component {
             state: '',
             zip: '',
             cardnumber: '',
-            expirydate: ''
+            expirydate: '',
+            cvv: ''
         };
 
         this.setValue = this.setValue.bind(this);
@@ -47,7 +48,8 @@ export default class Register extends React.Component {
             state: this.state.state,
             zip: this.state.zip,
             cardnumber: this.state.cardnumber,
-            expirydate: this.state.expirydate
+            expirydate: this.state.expirydate,
+            cvv: this.state.cvv
         }
         console.log(newCust);
         fetch('/api/user', {
@@ -135,6 +137,10 @@ export default class Register extends React.Component {
                         <Form.Group controlId="expirydate">
                             <Form.Label>Credit Card Expiry Date:</Form.Label>
                             <Form.Control name="expirydate" onChange={this.setValue} type="date" />
+                        </Form.Group>
+                        <Form.Group controlId="cvv">
+                            <Form.Label>CVV:</Form.Label>
+                            <Form.Control name="cvv" onChange={this.setValue} type="password" />
                         </Form.Group>
                         <Button variant="info" type="submit" style={{ marginTop: '1rem', marginBottom : '2rem' }} >Register</Button>
                     </Form>

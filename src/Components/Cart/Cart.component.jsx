@@ -32,7 +32,6 @@ export default class ItemDisplay extends React.Component {
                 {
                     alert('You have successfully deleted the item from your cart.')
                     window.location.reload();
-
                 }
                 else
                 {

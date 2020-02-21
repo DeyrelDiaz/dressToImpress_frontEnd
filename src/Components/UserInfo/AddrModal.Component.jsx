@@ -1,6 +1,6 @@
 import React from 'react';
 import {Modal, Form, Button} from 'react-bootstrap';
-import { Col,Row } from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 
 export default class AddrModal extends React.Component {
     constructor(props) {
@@ -24,34 +24,31 @@ export default class AddrModal extends React.Component {
     onSubmit(event) {
         console.log("on submit works")
         event.preventDefault();
-        const newItem = {
-            Color: this.state.Color,
-            ItemType: this.state.ItemType,
-            Name: this.state.Name,
-            Cost: this.state.Cost,
-            Description: this.state.Description,
-            Display: this.state.Display
+        const changedAddr = {
+            Number: this.state.Number,
+            Street: this.state.Street,
+            City: this.state.City,
+            State: this.state.State,
+            ZipCode: this.state.ZipCode
                 }
-        console.log(newItem);
-        fetch('/api/item', {
+        console.log(changedAddr);
+        fetch('/api/user/profile/addrModal', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newItem)
+            body: JSON.stringify(changedAddr)
         }).then((res) => res.json())
             .then((result) => {
                 console.log(result);
                 if (result.success == true) {
-                    alert('Item Added')
-                  //  this.props.history.push('/home');
+                    alert('Address is Updated Successfully')
                 }
                 else {
-                    alert('Item was not added')
+                    alert('Address was unable to be updated')
                 }
             })
         }
-
 
 render(){
     return(
@@ -96,7 +93,7 @@ render(){
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="info">Update!</Button>
+                <Button variant="info" type="submit">Update!</Button>
             </Modal.Footer>
         </Modal>
     )
