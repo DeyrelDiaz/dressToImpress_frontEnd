@@ -50,7 +50,7 @@ export default class UserInfo extends React.Component {
 
     componentDidMount() {
         const params = {
-            username: 'tester'
+            username: JSON.parse(localStorage.getItem('user'))
         }
 
         const url = '/api/user/profile';
@@ -79,7 +79,7 @@ export default class UserInfo extends React.Component {
                     orders: result.orders[1]
                 })
                 console.log("yeah?")
-                 console.log('im the state after',this.state.userinfo)
+                console.log('im the state after',this.state.userinfo)
             }
         },
         (err) => {
@@ -103,7 +103,7 @@ export default class UserInfo extends React.Component {
                 <Container>
                 <Tabs id="controlled-tab-example" variant="tabs" >
                     <Tab eventKey="info" title="User Profile" variant="dark">
-                   <br></br>
+                <br></br>
                     <h5 align="left">Address:</h5>
                         <Table borderless hover> 
                             <thead>
