@@ -127,13 +127,34 @@ export default class NewItem extends React.Component {
                     alert('Item Added')
                   //  this.props.history.push('/home');
                 }
-                else {
-                    alert('Item was not added')
+                else if(result.number == 1)
+                {
+                    alert('Item was not added. No special characters are allowed.')
+                }
+                else if(result.number == 2)
+                {
+                    alert('Item was not added. We do not support those colors or item types. Colors we support are: red, orange, yellow, green, blue, violet, pink, white, black. The item types we support are: dress, skirt, pants, shirt.')
                 }
             })
         }
 
-        
+        changeDB(event) {
+            fetch('/api/changedb', {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).then((res) => res.json())
+                .then((result) => {
+                    console.log(result);
+                    if (result.success == true) {
+                        alert('DB Changed')
+                    }
+                    else (result.number == 1)
+                    {
+                        alert('DB not changed')
+                    }
+                })
+            }
 
     render() {
         return(
@@ -163,7 +184,7 @@ export default class NewItem extends React.Component {
                         </Form.Group>
                         <Form.Group controlId="Cost">
                             <Form.Label>Cost:</Form.Label>
-                            <Form.Control name="Cost" onChange={this.setValue} type="text" placeholder="$$$" placeholder="ex. $5.50"/>
+                            <Form.Control name="Cost" onChange={this.setValue} type="number" placeholder="$$$" placeholder="ex. 5.50"/>
                         </Form.Group>
                         <Form.Group controlId="Description">
                             <Form.Label>Description:</Form.Label>
@@ -177,6 +198,7 @@ export default class NewItem extends React.Component {
                         <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}>
                             <Button variant="info" style={{ marginTop: '.5rem' }} onClick = {this.importItems}>Import</Button>
                         </ReactFileReader>
+                        <Button variant="info" style={{ marginTop: '.5rem' }} onClick = {this.changeDB} >Change DB</Button>
 
                     </Form>
                 </Container>

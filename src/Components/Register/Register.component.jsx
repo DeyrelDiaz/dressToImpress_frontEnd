@@ -61,8 +61,7 @@ export default class Register extends React.Component {
         }).then((res) => res.json())
             .then((result) => {
                 console.log(result);
-                if (result.success == true) {
-                    alert('User already exists! Please login.')
+                if (result.number == 0) {
                     this.props.history.push('/');
                 }
                 else if (result.number == 1){
@@ -70,7 +69,7 @@ export default class Register extends React.Component {
                 }
                 else if (result.number == 2)
                 {
-                    alert('One or more text fields are empty. Please fill them out and try again.')
+                    alert('There was an error. PLease remove all special characters and try again.')
                 }
             })
         }
@@ -128,7 +127,7 @@ export default class Register extends React.Component {
                         </Form.Group>
                         <Form.Group controlId="zip">
                             <Form.Label>Zip Code:</Form.Label>
-                            <Form.Control name="zip" onChange={this.setValue} type="text" />
+                            <Form.Control name="zip" onChange={this.setValue} type="number" />
                         </Form.Group>
                         <Form.Group controlId="cardnumber">
                             <Form.Label>Credit Card Number:</Form.Label>

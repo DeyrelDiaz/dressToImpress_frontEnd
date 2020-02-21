@@ -47,7 +47,7 @@ export default class ItemDisplayContainer extends React.Component {
         console.log("on submit works")
         event.preventDefault();
 
-         const params = {
+        const params = {
             Color: this.state.Color,
             Price: this.state.Price,
             Type: this.state.Type
@@ -99,7 +99,7 @@ export default class ItemDisplayContainer extends React.Component {
                     <Dropdown.Item eventKey="Yellow" onClick={this.setColorValue} >Yellow</Dropdown.Item>
                     <Dropdown.Item eventKey="Green" onClick={this.setColorValue} >Green</Dropdown.Item>
                     <Dropdown.Item eventKey="Blue" onClick={this.setColorValue} >Blue</Dropdown.Item>
-                    <Dropdown.Item eventKey="Indigo" onClick={this.setColorValue} >Pink</Dropdown.Item>
+                    <Dropdown.Item eventKey="Pink" onClick={this.setColorValue} >Pink</Dropdown.Item>
                     <Dropdown.Item eventKey="Violet" onClick={this.setColorValue} >Violet</Dropdown.Item>
                     <Dropdown.Item eventKey="White" onClick={this.setColorValue} >White</Dropdown.Item>
                     <Dropdown.Item eventKey="Black" onClick={this.setColorValue} >Black</Dropdown.Item>

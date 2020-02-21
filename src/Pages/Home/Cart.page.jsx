@@ -2,6 +2,8 @@ import React from 'react';
 import CartDisplayContainer from '../../Components/CartDisplayContainer/CartDisplayContainer.component';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 
+
+
 export default class CartPage extends React.Component {
     constructor(props) {
         super(props);
@@ -12,6 +14,7 @@ export default class CartPage extends React.Component {
     }
 
     componentDidMount() {
+        
         const params = {
             username:  JSON.parse(localStorage.getItem('user'))
         }
@@ -36,15 +39,24 @@ export default class CartPage extends React.Component {
                 this.setState({
                     cartitems: result.items
                 })
+
             }
         },
         (err) => {
             console.log(err)
         })
+
+        console.log('localStorage :', localStorage);
+
     }
 
     onSubmit(event) {
 
+        // if(this.state.cartitems.length == 0)
+        // {
+        //     alert('Your cart is empty! Please put items in your cart before proceeding to buy anything.')
+        //     return;
+        // }
         event.preventDefault();
         const newOrder = {
             date: new Date(),
