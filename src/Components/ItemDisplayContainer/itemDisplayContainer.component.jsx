@@ -104,7 +104,7 @@ export default class ItemDisplayContainer extends React.Component {
                     <Dropdown.Item eventKey="White" onClick={this.setColorValue} >White</Dropdown.Item>
                     <Dropdown.Item eventKey="Black" onClick={this.setColorValue} >Black</Dropdown.Item>
                 </DropdownButton>
-                <DropdownButton as={ButtonGroup} title="Sort by Price" id="bg-vertical-dropdown-2" variant = "" >
+                {/* <DropdownButton as={ButtonGroup} title="Sort by Price" id="bg-vertical-dropdown-2" variant = "" >
                     <Dropdown.Item eventKey="ASC" onClick={this.setPriceValue}>Low to High</Dropdown.Item>
                     <Dropdown.Item eventKey="DESC" onClick={this.setPriceValue}>High to Low</Dropdown.Item>
                 </DropdownButton>
@@ -113,7 +113,7 @@ export default class ItemDisplayContainer extends React.Component {
                     <Dropdown.Item eventKey="Skirt" onClick={this.setTypeValue}>Skirt</Dropdown.Item>
                     <Dropdown.Item eventKey="Pant" onClick={this.setTypeValue}>Pant</Dropdown.Item>
                     <Dropdown.Item eventKey="Shirt" onClick={this.setTypeValue}>Shirt</Dropdown.Item>
-                </DropdownButton>
+                </DropdownButton> */}
                 <Button variant="info" type="button" onClick={this.onSubmit}>Sort!</Button>
                 </ButtonGroup>
                 <Container>
