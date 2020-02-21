@@ -1,5 +1,6 @@
 import React from 'react';
-import {Modal, Form, Button, Col, Row} from 'react-bootstrap';
+import {Modal, Form, Button} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 
 export default class CardModal extends React.Component {
     constructor(props) {
@@ -7,7 +8,7 @@ export default class CardModal extends React.Component {
         this.state = {
             Number: '',
             Date: '',
-            CVV: '',
+            CVV: ''
             };
 
         this.setValue = this.setValue.bind(this);
@@ -22,11 +23,12 @@ export default class CardModal extends React.Component {
         console.log("on submit works")
         event.preventDefault();
         const changedCard = {
+            username: JSON.parse(localStorage.getItem('user')),
             Number: this.state.Number,
             Date: this.state.Date,
-            CVV: this.state.CVV
-                }
-        console.log(changedCard);
+            CVV: this.state.CVV,
+            }
+        console.log(changedAddr);
         fetch('/api/user/profile/cardModal', {
             method: 'POST',
             headers: {
@@ -37,20 +39,21 @@ export default class CardModal extends React.Component {
             .then((result) => {
                 console.log(result);
                 if (result.success == true) {
-                    alert('Card details have been Updated Successfully')
+                    alert('Card details Updated Successfully')
+                    window.location.reload();
                 }
                 else {
-                    alert('Card Details were not updated, try again')
+                    alert('Card details were unable to be updated')
                 }
             })
         }
 
 render(){
     return(
-        <Modal {...this.props} size="lg" aria-labelledby="addrModal" centered>
+        <Modal show={this.props.show} onHide={this.props.onHide} size="lg" aria-labelledby="cardModal" centered>
             <Modal.Header closeButton>
                 <Modal.Title show={true} onHide={this.closeEditAddrModal}>
-                Edit Card Details 
+                Edit Address 
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -58,22 +61,22 @@ render(){
                     <Form.Group as={Row} controlId="Number">
                         <Form.Label column sm="2">Card Number:</Form.Label>
                         <Col>
-                        <Form.Control name="Number" onChange={this.setValue} type="text" />
+                        <Form.Control name="Number" onChange={this.setValue} type="number" placeholder="xxxxxxxxxxxxxxxx " />
                         </Col>
                     </Form.Group>
-                    <Form.Group as={Row} controlId="date">
-                        <Form.Label column sm="2">Exp Date:</Form.Label>
+                    <Form.Group as={Row} controlId="Date">
+                        <Form.Label column sm="2">Expiration Date:</Form.Label>
                         <Col>
-                        <Form.Control name="date" onChange={this.setValue} type="date" />
+                        <Form.Control name="Date" onChange={this.setValue} type="date" />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="CVV">
                         <Form.Label column sm="2">CVV:</Form.Label>
                         <Col>
-                        <Form.Control name="CVV" onChange={this.setValue} type="password" />
+                        <Form.Control name="CVV" onChange={this.setValue} type="number" placeholder="xxx" />
                         </Col>
                     </Form.Group>
-                    <Button variant="info">Update!</Button>
+                    <Button variant="info" type="submit">Update!</Button>
                 </Form>
             </Modal.Body>
         </Modal>
