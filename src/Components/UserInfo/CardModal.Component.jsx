@@ -37,10 +37,10 @@ export default class CardModal extends React.Component {
             .then((result) => {
                 console.log(result);
                 if (result.success == true) {
-                    alert('Address is Updated Successfully')
+                    alert('Card details have been Updated Successfully')
                 }
                 else {
-                    alert('Address was unable to be updated')
+                    alert('Card Details were not updated, try again')
                 }
             })
         }
@@ -50,7 +50,7 @@ render(){
         <Modal {...this.props} size="lg" aria-labelledby="addrModal" centered>
             <Modal.Header closeButton>
                 <Modal.Title show={true} onHide={this.closeEditAddrModal}>
-                Edit Address 
+                Edit Card Details 
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -73,11 +73,9 @@ render(){
                         <Form.Control name="CVV" onChange={this.setValue} type="password" />
                         </Col>
                     </Form.Group>
+                    <Button variant="info">Update!</Button>
                 </Form>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="info">Update!</Button>
-            </Modal.Footer>
         </Modal>
     )
 }

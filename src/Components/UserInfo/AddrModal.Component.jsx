@@ -10,7 +10,7 @@ export default class AddrModal extends React.Component {
             Street: '',
             City: '',
             State: '',
-            ZipCode: ''
+            Zipcode: ''
             };
 
         this.setValue = this.setValue.bind(this);
@@ -30,7 +30,7 @@ export default class AddrModal extends React.Component {
             Street: this.state.Street,
             City: this.state.City,
             State: this.state.State,
-            ZipCode: this.state.ZipCode
+            ZipCode: this.state.Zipcode
                 }
         console.log(changedAddr);
         fetch('/api/user/profile/addrModal', {
@@ -44,6 +44,7 @@ export default class AddrModal extends React.Component {
                 console.log(result);
                 if (result.success == true) {
                     alert('Address is Updated Successfully')
+                    window.location.reload();
                 }
                 else {
                     alert('Address was unable to be updated')
@@ -53,7 +54,7 @@ export default class AddrModal extends React.Component {
 
 render(){
     return(
-        <Modal {...this.props} size="lg" aria-labelledby="addrModal" centered>
+        <Modal show={this.props.show} onHide={this.props.onHide} size="lg" aria-labelledby="addrModal" centered>
             <Modal.Header closeButton>
                 <Modal.Title show={true} onHide={this.closeEditAddrModal}>
                 Edit Address 
@@ -91,11 +92,9 @@ render(){
                         <Form.Control name="Zipcode" onChange={this.setValue} type="text" />
                         </Col>
                     </Form.Group>
+                    <Button variant="info" type="submit">Update!</Button>
                 </Form>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="info" type="submit">Update!</Button>
-            </Modal.Footer>
         </Modal>
     )
 }

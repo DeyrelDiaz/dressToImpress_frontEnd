@@ -13,8 +13,8 @@ export default class UserInfo extends React.Component {
         this.state = {
             userinfo: {},
             cardend: -1,
-            orders: {}
-                }
+            orders: []
+        }
 
             console.log('user info', this.username);
 
@@ -23,7 +23,8 @@ export default class UserInfo extends React.Component {
             this.closeEditAddrModal = this.closeEditAddrModal.bind(this);
             this.closeEditCardModal = this.closeEditCardModal.bind(this);
             this.setValue = this.setValue.bind(this);
-            this.componentDidMount = this.componentDidMount.bind(this);
+            // this.componentDidMount = this.componentDidMount.bind(this);
+            this.displayOrder = this.displayOrder.bind(this);
 
     }
 
@@ -70,13 +71,13 @@ export default class UserInfo extends React.Component {
         }).then((res) => res.json())
         .then((result) => {
             if (result.success) {
-                console.log('res',result.orders[0])
+                console.log('res',result.orders)
                 //console.log(this.state)
 
                 this.setState({
                     userinfo: result.items[0],
                     cardend: result.cardend,
-                    orders: result.orders[1]
+                    orders: result.orders
                 })
                 console.log("yeah?")
                 console.log('im the state after',this.state.userinfo)
@@ -85,6 +86,23 @@ export default class UserInfo extends React.Component {
         (err) => {
             console.log(err)
         })
+    }
+
+    displayOrder(order, index){
+        console.log('mapping orders', order)
+        return(
+            <tr>
+                                <td>{order.Date}</td>
+                                <td align= "center"><Card style={{ width: '15rem' ,height: '20rem' }}>
+                                <Card.Body>
+                                    <Card.Img style={{ width: '8rem' ,height: '10rem'}}src={order.Display} />
+                                    {/* <Card.Title>{this.props.title}</Card.Title> */}
+                                    <Card.Text>{order.Name}</Card.Text>
+                                    <Card.Footer>${order.Cost}</Card.Footer>
+                                </Card.Body>
+                            </Card></td>
+                                </tr>
+        )
     }
 
     render(){
@@ -155,17 +173,7 @@ export default class UserInfo extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <td>{this.state.orders.Date}</td>
-                                <td><Card style={{ width: '18rem' }}>
-                                <Card.Body>
-                                    <Card.Img src={this.state.orders.Display} />
-                                    <Card.Title>{this.props.title}</Card.Title>
-                                    <Card.Text>{this.state.orders.Description}</Card.Text>
-                                    <Card.Footer>${this.state.orders.Cost}</Card.Footer>
-                                </Card.Body>
-                            </Card></td>
-                                </tr>
+                            {this.state.orders == [] ? <tr></tr> : this.state.orders.map(this.displayOrder)}
                             </tbody>
                         </Table>
                         </div>
