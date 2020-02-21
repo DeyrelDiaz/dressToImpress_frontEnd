@@ -12,7 +12,8 @@ export default class UserInfo extends React.Component {
 
         this.state = {
             userinfo: {},
-            cardend: -1
+            cardend: -1,
+            orders: {}
                 }
 
             console.log('user info', this.username);
@@ -69,12 +70,13 @@ export default class UserInfo extends React.Component {
         }).then((res) => res.json())
         .then((result) => {
             if (result.success) {
-                console.log('res',result.items[0])
+                console.log('res',result.orders[0])
                 //console.log(this.state)
 
                 this.setState({
                     userinfo: result.items[0],
-                    cardend: result.cardend
+                    cardend: result.cardend,
+                    orders: result.orders[1]
                 })
                 console.log("yeah?")
                  console.log('im the state after',this.state.userinfo)
@@ -145,14 +147,27 @@ export default class UserInfo extends React.Component {
                     </Tab>
                     <Tab eventKey="orders" title="Orders" variant="dark">
                         <div>
-                            <Card style={{ width: '18rem' }}>
+                        <Table borderless hover> 
+                            <thead>
+                                <tr>
+                                <th>Date</th>
+                                <th>Item</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>{this.state.orders.Date}</td>
+                                <td><Card style={{ width: '18rem' }}>
                                 <Card.Body>
-                                    <Card.Img src={this.props.imgUrl} />
+                                    <Card.Img src={this.state.orders.Display} />
                                     <Card.Title>{this.props.title}</Card.Title>
-                                    <Card.Text>{this.props.text}</Card.Text>
-                                    <Card.Footer>${this.props.cost}</Card.Footer>
+                                    <Card.Text>{this.state.orders.Description}</Card.Text>
+                                    <Card.Footer>${this.state.orders.Cost}</Card.Footer>
                                 </Card.Body>
-                            </Card>
+                            </Card></td>
+                                </tr>
+                            </tbody>
+                        </Table>
                         </div>
                     </Tab>
                 </Tabs>

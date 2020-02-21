@@ -25,6 +25,7 @@ export default class AddrModal extends React.Component {
         console.log("on submit works")
         event.preventDefault();
         const changedAddr = {
+            username: 'tester',
             Number: this.state.Number,
             Street: this.state.Street,
             City: this.state.City,
