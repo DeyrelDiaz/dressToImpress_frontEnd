@@ -149,7 +149,7 @@ export default class NewItem extends React.Component {
                     if (result.success == true) {
                         alert('DB Changed')
                     }
-                    else (result.number == 1)
+                    else
                     {
                         alert('DB not changed')
                     }
@@ -166,6 +166,8 @@ export default class NewItem extends React.Component {
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
                         <Nav.Link href="/cart">Cart</Nav.Link>
                         <Nav.Link href="/user/profile">User Profile</Nav.Link>
+                        <Nav.Link href="/">Logout</Nav.Link>
+
                     </Nav>
                 </Navbar>
                 <Container>

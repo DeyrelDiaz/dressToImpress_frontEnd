@@ -98,6 +98,8 @@ export default class CartPage extends React.Component {
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
                         <Nav.Link href="/cart">Cart</Nav.Link>
                         <Nav.Link href="/user/profile">User Profile</Nav.Link>
+                        <Nav.Link href="/">Logout</Nav.Link>
+
                     </Nav>
                 </Navbar>
                 <Button value={this.props.id} variant='info' type='submit' style={{ marginTop: '1rem', marginBottom : '1rem' }} onClick = {this.onSubmit}>Buy All Items</Button>

@@ -18,6 +18,8 @@ export default class NavBar extends React.Component {
                         {/* <Nav.Link href="/register">Register</Nav.Link> */}
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
                         <Nav.Link href="/cart">Cart</Nav.Link>
+                        <Nav.Link href="/">Logout</Nav.Link>
+
                     </Nav>
                 </Navbar>
             </div>
