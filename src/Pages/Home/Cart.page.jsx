@@ -86,7 +86,13 @@ export default class CartPage extends React.Component {
                 }
             })
         }
-
+        clearStorage(event)
+        {
+            console.log('localStorage.user :', localStorage.user);
+            localStorage.removeItem('user')
+            console.log('localStorage.user :', localStorage.user);
+    
+        }
     render() {
 
         return(
@@ -98,7 +104,7 @@ export default class CartPage extends React.Component {
                         <Nav.Link href="/newItem">Add Item</Nav.Link>
                         <Nav.Link href="/cart">Cart</Nav.Link>
                         <Nav.Link href="/user/profile">User Profile</Nav.Link>
-                        <Nav.Link href="/">Logout</Nav.Link>
+                        <Button href="/" onClick={this.clearStorage} variant='info'>Logout</Button>
 
                     </Nav>
                 </Navbar>

@@ -105,6 +105,14 @@ export default class UserInfo extends React.Component {
         )
     }
 
+    clearStorage(event)
+    {
+        console.log('localStorage.user :', localStorage.user);
+        localStorage.removeItem('user')
+        console.log('localStorage.user :', localStorage.user);
+
+    }
+
     render(){
         return(
             <div>
