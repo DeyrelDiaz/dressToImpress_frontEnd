@@ -12,7 +12,7 @@ export default class ItemDisplay extends React.Component {
         event.preventDefault();
         const addToCart = {
             id: event.target.value,
-            username: 'tester'
+            username:  JSON.parse(localStorage.getItem('user'))
         }
         console.log('addToCart :', addToCart);
         fetch('/api/cart', {

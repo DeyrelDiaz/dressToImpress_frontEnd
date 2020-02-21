@@ -13,7 +13,7 @@ export default class CartPage extends React.Component {
 
     componentDidMount() {
         const params = {
-            username: 'tester'
+            username:  JSON.parse(localStorage.getItem('user'))
         }
 
         const url = '/api/cart';
@@ -48,7 +48,7 @@ export default class CartPage extends React.Component {
         event.preventDefault();
         const newOrder = {
             date: new Date(),
-            username: 'tester'
+            username:  JSON.parse(localStorage.getItem('user'))
         }
         console.log('new Order', newOrder);
         fetch('/api/order', {

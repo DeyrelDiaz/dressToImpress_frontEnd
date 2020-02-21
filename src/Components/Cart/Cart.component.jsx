@@ -14,9 +14,10 @@ export default class ItemDisplay extends React.Component {
 
     onSubmit(event) {
         event.preventDefault();
+        console.log('localStorage :', localStorage);
         const deleteCartItem = {
             id: event.target.value,
-            username: 'tester'
+            username: JSON.parse(localStorage.getItem('user'))
         }
         console.log('deleteCartItem', deleteCartItem);
         fetch('/api/cart', {
