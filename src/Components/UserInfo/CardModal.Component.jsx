@@ -28,7 +28,7 @@ export default class CardModal extends React.Component {
             Date: this.state.Date,
             CVV: this.state.CVV,
             }
-        console.log(changedAddr);
+        console.log(changedCard);
         fetch('/api/user/profile/cardModal', {
             method: 'POST',
             headers: {
